@@ -166,10 +166,46 @@
             }
         }
         public function insertForumPost($table, $forumPostInformation){
+            $currPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+            $userId = $forumPostInformation[0];
+            $forumPostTitle = $forumPostInformation[1];
+            $forumPostContent = $forumPostInformation[2];
+            $forumPostCategory = $forumPostCategory[3];
 
+            //Check if the fields are empty.
+            if(empty($forumPostTitle) || empty($forumPostContent) || empty($forumPostCategory)){
+                header("Location: " . $currPageName . "?error=emptyFields");
+                exit();
+            }else if(strlen($forumPostContent) > 4999){
+                header("Location: " . $currPageName . "?error=postTooLong");
+                exit();
+            }else{
+                $stmt = $this->pdo->prepare('INSERT INTO forumposts (userid, forumposttitle, forumpostcontent, category, timeposted) VALUES(:userid, :forumposttitle, :forumpostcontent, :category, now())');
+                $stmt->bindParam(":userid",$userId);
+                $stmt->bindParam(":forumposttitle",$forumPostTitle);
+                $stmt->bindParam(":forumpostcontent",$forumPostContent);
+                $stmt->bindParam(":category",$forumPostCategory);
+                $stmt->execute();
+
+                header("Location: index.php?success");
+            }
         }
         public function insertForumComment($table, $forumCommentInformation){
-            
+            $forumPostId = $forumCommentInformation[0];
+            $userId = $forumCommentInformation[1];
+            $forumComment = $forumCommentInformation[2];
+            if(empty($forumComment)){
+                header("Location: forumPost.php?error=emptyField");
+                exit();
+            }else{
+                $stmt = $this->pdo->prepare('INSERT INTO forumcomment (forumpostid, userid, forumcomment, timeCommented) VALUES (:forumpostid, :userid, :forumcomment, now())');
+                $stmt->bindParam(":forumpostid", $forumPostId);
+                $stmt->bindParam(":userid", $userId);
+                $stmt->bindParam(":forumcomment",$forumComment);
+                $stmt->execute();
+                header("Location: forumPost.php?success");
+                exit();
+            }
         }
     }
 ?>
