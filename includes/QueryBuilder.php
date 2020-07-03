@@ -167,6 +167,7 @@
                 header("Location: index.php?success");
             }
         }
+        //Query for inserting a comment on a news post
         public function insertNewsComment($table, $newsCommentInformation){
             $newsPostId = $newsCommentInformation[0];
             $userId = $newsCommentInformation[1];
@@ -184,6 +185,7 @@
                 exit();
             }
         }
+        //Query for inserting a forum post
         public function insertForumPost($table, $forumPostInformation){
             $currPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
             $userId = $forumPostInformation[0];
@@ -208,6 +210,7 @@
                 header("Location: index.php?success");
             }
         }
+        //Query for inserting a comment on a forum post
         public function insertForumComment($table, $forumCommentInformation){
             $forumPostId = $forumCommentInformation[0];
             $userId = $forumCommentInformation[1];
@@ -227,7 +230,7 @@
                 exit();
             }
         }
-        //Function to retrieve the pages from the newsposts table.
+        //Function to retrieve the pages from the newsposts table, limiting them depending on the number we want, and after that displaying them
         //
         public function getPages($page){
             //Defining the amount of posts per page.
@@ -248,6 +251,7 @@
             $stmt = $this->pdo->query('SELECT * FROM newsposts ORDER BY timeposted DESC LIMIT ' . $thisPageFirstResult . "," . $resultsPerPage);
             return $stmt->fetchAll();
         }
+        //Function to get the number of pages of our pagination
         public function numberOfPages(){
             $resultsPerPage = 5;
             
@@ -258,6 +262,90 @@
             $numberOfPages = ceil($numberOfPosts/$resultsPerPage);
 
             return $numberOfPages;
+        }
+        //getPagesForSpecificCategory - Same as getPages, but this time for a specific category.
+        public function getPagesForSpecificCategory($page, $category){
+            $stmt = $this->pdo->prepare('SELECT id FROM category WHERE name = :name ');
+            $stmt->bindParam(":name", $category);
+            $stmt->execute();
+            $categoryId = $stmt->fetchColumn();
+
+            $resultsPerPage = 5;
+
+            $stmt = $this->pdo->query("SELECT * FROM postcategories WHERE categoryid = " . $categoryId);
+            $posts = $stmt->fetchAll();
+            $numberOfPosts = count($posts);
+
+            $numberOfPages = ceil($numberOfPosts/$resultsPerPage);
+
+            $thisPageFirstResult = ($page-1)*$resultsPerPage;
+
+            //Retrieve selected results from database
+            $stmt = $this->pdo->prepare('SELECT * FROM newsposts INNER JOIN postcategories ON newsposts.id = postcategories.postid WHERE postcategories.categoryid = :categoryId ORDER BY newsposts.timeposted DESC LIMIT ' . $thisPageFirstResult . "," . $resultsPerPage);
+            $stmt->bindParam(":categoryId", $categoryId);
+            $stmt->execute();
+            return $stmt->fetchAll();
+            
+        }
+
+        //Same as the getPage() method but for our forum posts.
+        public function getForumPosts($page, $category){
+            $resultsPerPage = 5;
+
+            $stmt = $this->pdo->query('SELECT * FROM forumposts WHERE category = ' . $category);
+            $posts = $stmt->fetchAll();
+            $numberOfPosts = count($posts);
+
+            $numberOfPages = ceil($numberOfPosts/$resultsPerPage);
+     
+            $thisPageFirstResult = ($page-1)*$resultsPerPage;
+
+            $stmt = $this->pdo->prepare('SELECT * FROM forumposts WHERE category = :category ORDER BY timeposted DESC LIMIT ' . $thisPageFirstResult . "," . $resultsPerPage);
+            $stmt->bindParam(":category", $category);
+            return $stmt->fetchAll();
+        }
+        //same as numberOfPages but for forum pagination.
+        public function numberOfPagesForum($category){
+            $resultsPerPage = 5;
+            
+            $stmt = $this->pdo->query('SELECT * FROM forumposts WHERE category = ' . $category);
+            $posts = $stmt->fetchAll();
+            $numberOfPosts = count($posts);
+
+            $numberOfPages = ceil($numberOfPosts/$resultsPerPage);
+
+            return $numberOfPages;
+        }
+        /*Functions about deleting posts & comments.*/
+
+        //Delete news post function - Available only to the admin.
+        public function deleteNewsPost($newsPostId){
+            $stmt = $this->pdo->query("DELETE FROM newscomment WHERE newspostid = " . $newsPostId);
+            $stmt = $this->pdo->query("DELETE FROM postcategories WHERE postid = " . $newsPostId);
+            $stmt = $this->pdo->query("DELETE FROM newsposts WHERE id = " . $newsPostId);
+
+            header("Location: index.php?success=newsPostDeleted");
+        }
+        //Delete a news comment function - Available to the user who commented and an admin.
+        public function deleteNewsComment($newsCommentId){
+            $query_strings = $_SERVER['QUERY_STRING'];
+            $stmt = $this->pdo->query("DELETE FROM newscomment WHERE id = " . $newsCommentId);
+
+            header("Location: newsPost.php?" . $query_strings);
+        }
+        //Delete forum post function - Available to the user who posted it and to an admin.
+        public function deleteForumPost($forumPostId, $category){
+            $stmt = $this->pdo->query("DELETE FROM forumcomment WHERE forumpostid = " . $forumPostId);
+            $stmt = $this->pdo->query("DELETE FROM forumposts WHERE id = " . $forumPostId);
+            
+            header("Location: forum.php?category=" . $category);
+        }
+        //Delete a forum post comment - Available to the user who commented and to an admin.
+        public function deleteForumComment($forumCommentId){
+            $query_strings = $_SERVER['QUERY_STRING'];
+            $stmt = $this->pdo->query("DELETE FROM forumcomment WHERE id = " . $forumCommentId);
+
+            header("Location: forumPost.php?" . $query_strings);
         }
     }
 ?>
