@@ -347,5 +347,96 @@
 
             header("Location: forumPost.php?" . $query_strings);
         }
+
+
+        //Function about changing your user information
+        public function changeProfileInformation($userInformation){
+            $username = $userInformation[0];
+            $email = $userInformation[1];
+            $password = $userInformation[2];
+            $confirmPassword = $userInformation[3];
+            $userId = $userInformation[4];
+            
+            if(empty($username) && empty($email) && empty($password) && empty($confirmPassword)){
+                header("Location: index.php?allfieldsempty");
+                exit;
+            }
+            $stmt = $this->pdo->prepare('SELECT id FROM users WHERE username = :username');
+            $stmt->bindParam(":username", $username);
+            $stmt->execute();
+            $dbUserIdUsername = $stmt->fetchColumn();
+
+            if($dbUserIdUsername != $userId && $dbUserIdUsername != false){
+                    header("Location: index.php?usernameAlreadyTaken");
+                    exit();
+            }
+            $stmt = $this->pdo->prepare('SELECT id FROM users WHERE email = :email');
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+            $dbUserIdEmail = $stmt->fetchColumn();
+            var_dump($dbUserIdEmail);
+            if($dbUserIdEmail != $userId && $dbUserIdEmail != false){
+                    header("Location: index.php?emailAlreadyTaken");
+                    exit();
+            }
+
+            if(empty($password) && empty($confirmPassword)){
+                $stmt = $this->pdo->prepare("UPDATE users SET username = :username, email = :email WHERE id = " . $userId);
+                $stmt->bindParam(":username", $username);
+                $stmt->bindParam(":email", $email);
+                $stmt->execute();
+                $_SESSION['username'] = $username;
+                $_SESSION['email'] = $email;
+                header("Location: index.php?success");
+                exit();
+            }else if($password != $confirmPassword){
+                header("Location: index.php?passwordsDontMatch");
+                exit();
+            }else if(strlen($password) < 8 || strlen($password) > 26){
+                header("Location: index.php?error=passwordTooShortOrTooLong");
+                exit();
+            }else{
+                $stmt = $this->pdo->prepare('SELECT password FROM users WHERE id = :userId');
+                $stmt->bindParam(':userId', $userId);
+                $stmt->execute();
+                $dbPassword = $stmt->fetchColumn();
+                if(password_verify($password, $dbPassword)){
+                    header("Location: index.php?samePasswordAsBefore");
+                    exit();
+                }else{
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                    $stmt = $this->pdo->prepare("UPDATE users SET username = :username, email = :email, password = :password WHERE id = :userId");
+                    $stmt->bindParam(":userId", $userId);
+                    $stmt->bindParam(":username", $username);
+                    $stmt->bindParam(":email", $email);
+                    $stmt->bindParam(":password", $hashedPassword);
+                    $stmt->execute();
+
+                    $_SESSION['username'] = $username;
+                    $_SESSION['email'] = $email;
+
+                    header("Location: index.php?successProfileInformationChange");
+                    exit();
+                }
+            }
+        }
+        //Function about changing your profile picture
+        public function changeProfilePicture($userId){
+            $photo = $_FILES['photo']['name'];
+            $profilepic = "profilepictures/".basename($photo);
+            $stmt = $this->pdo->prepare("UPDATE users SET profilepic = :profilepic WHERE id = :userId");
+		    $stmt->bindParam(":profilepic", $profilepic);
+		    $stmt->bindParam(":userId", $userId);
+            $stmt->execute();
+
+            if(move_uploaded_file($_FILES['photo']['tmp_name'], $profilepic)) {
+                $msg = "Image uploaded successfully";
+                // header ('Location: profilepage.php?userId=' . $userId);
+                header("Location: index.php?success=profilePicChanged");
+            }else{
+                $msg = "Failed to upload image";
+                header ('Location: index.php?error=failedToUploadImage');
+            }
+        }
     }
 ?>

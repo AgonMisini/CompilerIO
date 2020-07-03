@@ -3,8 +3,6 @@
     include 'includes/QueryBuilder.php';
     $conn = Connection::conn();
     $query = new QueryBuilder($conn);
-
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +12,6 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="POST">
-        <input type="submit" name="submit">
-    </form>
+
 </body>
 </html>
