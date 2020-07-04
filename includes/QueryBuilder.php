@@ -85,6 +85,12 @@
                 }
             }
         }
+        //Function for logging out.
+        public function logout(){
+            session_unset();
+            session_destroy();
+            header("Location: index.php");
+        }
         //Query for logging inside the website alongside with the session being set.
         public function login($table, $loginInformation){
             $currPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
@@ -436,6 +442,42 @@
             }else{
                 $msg = "Failed to upload image";
                 header ('Location: index.php?error=failedToUploadImage');
+            }
+        }
+        //Function about deleting an entire user along with his posts, comments. -TODO- Figure out how to delete the profile picture too.
+        public function deleteUser($userId){
+            //Checks if the user is an admin or not.
+            $stmt = $this->pdo->query('SELECT admin FROM users WHERE id = ' . $userId);
+            $result = $stmt->fetchColumn();
+            //Checks if the user is an admin or not, since only admins can post newsposts so it would be pointless to run the code below on a normal user.
+            if($result){
+                //Selects the newsposts information and deletes the postid on postcategories.
+                $stmt = $this->pdo->query('SELECT * FROM newsposts WHERE userid = ' . $userId);
+                $ids = $stmt->fetchAll();
+                foreach($ids as $postId){
+                    $stmt = $this->pdo->query('DELETE FROM postcategories WHERE postid = ' . $postId['id']);
+                }
+                $stmt = $this->pdo->query('DELETE FROM newsposts WHERE userid = ' . $userId);
+            }
+            //Deletes the news comments the user has made.
+            $stmt = $this->pdo->query('DELETE FROM newscomment WHERE userid = ' . $userId);
+
+            //Deletes the forum posts the user has made.
+            $stmt = $this->pdo->query('DELETE FROM forumposts WHERE userid = ' . $userId);
+
+            //Deletes the forum comments the user has made.
+            $stmt = $this->pdo->query('DELETE FROM forumcomment WHERE userid = ' . $userId);
+
+            //And finally delete the user and send them back to the main page. If the user deactivated his account then we unset the session and destroy it.
+            if($_SESSION['userId'] == $userId){
+                session_unset();
+                session_destroy();
+                $stmt = $this->pdo->query('DELETE FROM users WHERE id = ' . $userId);
+
+                header("Location: index.php?success=userWasDeletedSuccessfully");
+            }else{
+                $stmt = $this->pdo->query('DELETE FROM users WHERE id = ' . $userId);
+                header("Location: index.php?success=userWasDeletedSuccessfully");
             }
         }
     }

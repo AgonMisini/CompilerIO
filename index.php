@@ -1,6 +1,7 @@
 <?php 
     include 'includes/Connection.php';
     include 'includes/QueryBuilder.php';
+    session_start();
     $conn = Connection::conn();
     $query = new QueryBuilder($conn);
 ?>
