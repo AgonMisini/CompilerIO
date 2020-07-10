@@ -207,7 +207,7 @@
                 exit();
             }else{
                 //Insert forum post
-                $stmt = $this->pdo->prepare('INSERT INTO forumposts (userid, forumposttitle, forumpostcontent, category, timeposted) VALUES(:userid, :forumposttitle, :forumpostcontent, :category, now())');
+                $stmt = $this->pdo->prepare('INSERT INTO forumposts (userid, forumposttitle, forumpostcontent, category, timeposted, likes) VALUES(:userid, :forumposttitle, :forumpostcontent, :category, now(), 0)');
                 $stmt->bindParam(":userid",$userId);
                 $stmt->bindParam(":forumposttitle",$forumPostTitle);
                 $stmt->bindParam(":forumpostcontent",$forumPostContent);
@@ -236,6 +236,23 @@
                 exit();
             }
         }
+        //Query for liking a forum post while checking if the post has been liked by the same person before.
+        public function likeForumPost($forumPostId ,$userId){
+            $stmt = $this->pdo->query("SELECT COUNT(*) FROM forumpost_user_like WHERE userid = " . $userId . " AND forumpostid = " . $forumPostId);
+            $checkIfUserLiked = $stmt->fetchColumn();
+            if($checkIfUserLiked == 1){
+                $stmt = $this->pdo->query("UPDATE forumposts SET likes = likes - 1 WHERE id = " . $forumPostId);
+                $stmt = $this->pdo->query("DELETE FROM forumpost_user_like WHERE userid = " . $userId . " AND forumpostid = " . $forumPostId);
+            }else if($checkIfUserLiked == 0){
+                $stmt = $this->pdo->query("UPDATE forumposts SET likes = likes + 1 WHERE id = " . $forumPostId);
+                $stmt = $this->pdo->query("INSERT INTO forumpost_user_like (forumpostid, userid) VALUES (" . $forumPostId . ", " . $userId . ")");
+            }
+           
+        }
+
+
+
+
         //Function to retrieve the pages from the newsposts table, limiting them depending on the number we want, and after that displaying them
         //
         public function getPages($page){
@@ -295,10 +312,12 @@
         }
 
         //Same as the getPage() method but for our forum posts.
-        public function getForumPosts($page, $category){
+        public function getForumPosts($page, $category, $orderBy){
             $resultsPerPage = 5;
 
-            $stmt = $this->pdo->query('SELECT * FROM forumposts WHERE category = ' . $category);
+            $stmt = $this->pdo->prepare('SELECT * FROM forumposts WHERE category = :category');
+            $stmt->bindParam(":category", $category);
+            $stmt->execute();
             $posts = $stmt->fetchAll();
             $numberOfPosts = count($posts);
 
@@ -306,15 +325,30 @@
      
             $thisPageFirstResult = ($page-1)*$resultsPerPage;
 
-            $stmt = $this->pdo->prepare('SELECT * FROM forumposts WHERE category = :category ORDER BY timeposted DESC LIMIT ' . $thisPageFirstResult . "," . $resultsPerPage);
-            $stmt->bindParam(":category", $category);
-            return $stmt->fetchAll();
+            if($orderBy == "Newest"){
+                $stmt = $this->pdo->prepare('SELECT * FROM forumposts WHERE category = :category ORDER BY timeposted DESC LIMIT ' . $thisPageFirstResult . "," . $resultsPerPage);
+                $stmt->bindParam(":category", $category);
+                $stmt->execute();
+                return $stmt->fetchAll();
+            }else if($orderBy == "Oldest"){
+                $stmt = $this->pdo->prepare('SELECT * FROM forumposts WHERE category = :category ORDER BY timeposted ASC LIMIT ' . $thisPageFirstResult . "," . $resultsPerPage);
+                $stmt->bindParam(":category", $category);
+                $stmt->execute();
+                return $stmt->fetchAll();
+            }else if($orderBy == "Most_popular"){
+                $stmt = $this->pdo->prepare('SELECT * FROM forumposts WHERE category = :category ORDER BY likes DESC LIMIT ' . $thisPageFirstResult . "," . $resultsPerPage);
+                $stmt->bindParam(":category", $category);
+                $stmt->execute();
+                return $stmt->fetchAll();
+            }
         }
         //same as numberOfPages but for forum pagination.
         public function numberOfPagesForum($category){
             $resultsPerPage = 5;
             
-            $stmt = $this->pdo->query('SELECT * FROM forumposts WHERE category = ' . $category);
+            $stmt = $this->pdo->prepare('SELECT * FROM forumposts WHERE category = :category');
+            $stmt->bindParam(":category", $category);
+            $stmt->execute();
             $posts = $stmt->fetchAll();
             $numberOfPosts = count($posts);
 

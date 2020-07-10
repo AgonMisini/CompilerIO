@@ -2,8 +2,8 @@
     include 'includes/Connection.php';
     include 'includes/QueryBuilder.php';
     session_start();
-    $conn = Connection::conn();
-    $query = new QueryBuilder($conn);
+    // $conn = Connection::conn();
+    // $query = new QueryBuilder($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +13,6 @@
     <title>Document</title>
 </head>
 <body>
-
+    
 </body>
 </html>
