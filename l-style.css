@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #1B1B32;
+    color: #f5f6d7;
+    font-family: sans-serif;
+    font-size: 25px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0A0A23;
+    position: sticky;
+    top: 0;
+  }
+  
+  nav li {
+    float: left;
+  }
+  
+  nav li a {
+    display: block;
+    padding: 14px 16px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  nav li a:hover {
+    background-color: #fff;
+    color: #0a0a23;
+  }
+  
+  .active {
+    background-color: #fff;
+    color: #0a0a23;
+  }
+  
+  h1 {
+    font-size: 70px;
+    position: absolute;
+    top: 35px;
+    left: 130px;
+  }
+  
+  .form-box {
+      border: 3px solid white;
+      border-radius: 25px;
+      width: 450px;
+      height: 500px;
+      position: relative;
+      left: 500px;
+      top: 100px;
+      text-align: center;
+  }
+
+  .input-group {
+      display: block;
+      position: absolute;
+      top: 150px;
+  }
+
+  .email-field {
+      width: 200px;
+      margin: 25px;
+      padding: 10px 50px;
+  }
+
+  .password-field {
+      width: 200px;
+      margin: 25px;
+      padding: 10px 50px;
+  }
+
+  .check-box {
+      width: 25px;
+      height: 20px;
+  }
+
+  span {
+      position: absolute;
+      bottom: 25px;
+      right: 10px;
+      font-size: 20px;
+  }
+
+  .btn {
+    padding: 10px 70px;
+    position: absolute;
+    top: 230px;
+    right: 125px;
+    border-radius: 30px;
+    border: 1px solid #0A0A23;
+    background: linear-gradient(to right, #1B1B32, #0A0A23);
+    color: white;
+    font-size: 25px;
+  }
+
+  
