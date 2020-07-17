@@ -250,6 +250,23 @@
            
         }
 
+        //The function & query for inserting a contact us message.
+        public function insertContactUsMessage($userId, $messageInformation){
+            $subject = $messageInformation[0];
+            $message = $messageInformation[1];
+
+            if(empty($messageInformation)){
+                header("Location: contactUs.php?error=emptyFields");
+                exit();
+            }else{
+                $stmt = $this->pdo->prepare("INSERT INTO contactmessages (userid, subject, message, timesent) VALUES (:userid, :subject, :message, now())");
+                $stmt->bindParam(":userid", $userId);
+                $stmt->bindParam(":subject", $subject);
+                $stmt->bindParam(":message", $message);
+                $stmt->execute();
+                header("Location: index.php");
+            }
+        }
 
 
 
@@ -502,6 +519,9 @@
             //Deletes the forum comments the user has made.
             $stmt = $this->pdo->query('DELETE FROM forumcomment WHERE userid = ' . $userId);
 
+            //Deletes the contact messages the user has sent.
+            $stmt = $this->pdo->query('DELETE FROM contactmessages WHERE userid = ' . $userId);
+
             //And finally delete the user and send them back to the main page. If the user deactivated his account then we unset the session and destroy it.
             if($_SESSION['userId'] == $userId){
                 session_unset();
@@ -513,6 +533,11 @@
                 $stmt = $this->pdo->query('DELETE FROM users WHERE id = ' . $userId);
                 header("Location: index.php?success=userWasDeletedSuccessfully");
             }
+        }
+        //Function to delete a contact us message.
+        public function deleteContactMessage($postId){
+            $stmt = $this->pdo->query("DELETE FROM contactmessages WHERE id = " . $postId);
+            header("Location: contactMessages.php");
         }
     }
 ?>
