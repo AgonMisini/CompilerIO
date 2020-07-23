@@ -2,8 +2,10 @@
     include 'includes/Connection.php';
     include 'includes/QueryBuilder.php';
     session_start();;
-    // $conn = Connection::conn();
-    // $query = new QueryBuilder($conn);
+    $conn = Connection::conn();
+    $query = new QueryBuilder($conn);
+    var_dump($_SESSION);
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">

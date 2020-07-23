@@ -18,7 +18,7 @@
         
 
         //Insert user query.
-        public function insertUser($table, $userInformation){
+        public function insertUser($userInformation){
             $username = $userInformation[0];
             $email = $userInformation[1];
             $password = $userInformation[2];
@@ -81,7 +81,7 @@
                         $_SESSION['admin'] = $user['admin'];
                         $_SESSION['logged_in'] = 1;
                     }
-                    header("Location: index.php?successLogin");
+                    header("Location: index.php?success=accountCreated");
                 }
             }
         }
@@ -92,14 +92,11 @@
             header("Location: index.php");
         }
         //Query for logging inside the website alongside with the session being set.
-        public function login($table, $loginInformation){
-            $currPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
-            $url = $_SERVER['QUERY_STRING'];
-            echo $url;
+        public function login($loginInformation){
             $username = $loginInformation[0];
             $password = $loginInformation[1];
             if(empty($username) || empty($password)){
-                header("Location: " .  $currPageName .  "?" . $url . "&error=emptyFields");
+                header("Location: index-l.php?error=emptyFields");
                 exit();
             }else{
                 //MySQL for checking if the username exists in the DB
@@ -109,7 +106,7 @@
                 $userCheck = $stmt->fetchColumn();
                 //If there's no such username, exit script.
                 if($userCheck == 0){
-                    header("Location: " . $currPageName . "?" . $url . "&error=UsernameNotFound");
+                    header("Location: index-l.php?error=usernameNotFoundOrIncorrectPassword");
                 }else{
                     //Grabbing the passwords and checking if they match.
                     $stmt = $this->pdo->prepare("SELECT password FROM users WHERE username = :username");
@@ -119,7 +116,7 @@
                     $passwordCheck = password_verify($password, $dbPassword);
                     if($passwordCheck == false){
                         
-                        header("Location: " . $currPageName . "?" . $url . "&error=wrongPassword");
+                        header("Location: index-l.php?error=usernameNotFoundOrIncorrectPassword");
                         exit();
                     }else if($passwordCheck == true){
                         $stmt2 = $this->pdo->prepare("SELECT * FROM users WHERE username = :username");
@@ -133,10 +130,9 @@
                             $_SESSION['admin'] = $user['admin'];
                             $_SESSION['logged_in'] = 1;
                         }
-                       header("Location: " . $currPageName . "?" . $url . "&successLogin");
+                        header("Location: index.php?success=loggedInSuccessfully");
                     }else{
-                        header("Location: " . $currPageName ."?error=passworddoesntmatch");
-                        exit();
+                        header("Location: index-l.php?error=usernameNotFoundOrIncorrectPassword");
                     }
                 }
             } 
