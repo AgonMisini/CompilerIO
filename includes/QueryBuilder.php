@@ -247,16 +247,19 @@
         }
 
         //The function & query for inserting a contact us message.
-        public function insertContactUsMessage($userId, $messageInformation){
-            $subject = $messageInformation[0];
-            $message = $messageInformation[1];
+        public function insertContactUsMessage($messageInformation){
+            $name = $messageInformation[0];
+            $email = $messageInformation[1];
+            $subject = $messageInformation[2];
+            $message = $messageInformation[3];
 
-            if(empty($messageInformation)){
-                header("Location: contactUs.php?error=emptyFields");
+            if(empty($name) || empty($email) || empty($subject) || empty($message)){
+                header("Location: contact-us.php?error=emptyFields");
                 exit();
             }else{
-                $stmt = $this->pdo->prepare("INSERT INTO contactmessages (userid, subject, message, timesent) VALUES (:userid, :subject, :message, now())");
-                $stmt->bindParam(":userid", $userId);
+                $stmt = $this->pdo->prepare("INSERT INTO contactmessages (name, email, subject, message, timesent) VALUES (:name, :email, :subject, :message, now())");
+                $stmt->bindParam(":name", $name);
+                $stmt->bindParam(":email", $email);
                 $stmt->bindParam(":subject", $subject);
                 $stmt->bindParam(":message", $message);
                 $stmt->execute();

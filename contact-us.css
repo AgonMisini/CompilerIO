@@ -80,3 +80,7 @@ input[type=submit]:hover {
 h3, .btn {
   text-align: center;
 }
+.active {
+  background-color: #fff;
+  color: #0a0a23;
+}
