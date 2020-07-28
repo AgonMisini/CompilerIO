@@ -34,7 +34,6 @@
 			<li><a href="#">Home</a></li>
 			<li><a href="#">News</a></li>
 			<li><a href="#">Tutorial</a></li>
-			<li><a href="#">User</a></li>
       <li><a href="about-us.php">About Us</a></li>
       <li><a href="#" class="active">Contact Us</a></li>
 			<li><a href="#">Login - Register</a></li>

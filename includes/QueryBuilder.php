@@ -372,7 +372,43 @@
 
             return $numberOfPages;
         }
+
+        //Function for getting the forum posts a user has made
+        public function getUserForumPosts($page, $userId){
+            $resultsPerPage = 5;
+
+            $stmt = $this->pdo->prepare('SELECT * FROM forumposts WHERE userid = :userid');
+            $stmt->bindParam(":userid", $userId);
+            $stmt->execute();
+            $posts = $stmt->fetchAll();
+            $numberOfPosts = count($posts);
+
+            $numberOfPages = ceil($numberOfPosts/$resultsPerPage);
+     
+            $thisPageFirstResult = ($page-1)*$resultsPerPage;
+
+            $stmt = $this->pdo->prepare("SELECT * FROM forumposts WHERE userid = :userid ORDER BY timeposted DESC LIMIT " . $thisPageFirstResult . "," . $resultsPerPage);
+            $stmt->bindParam(":userid", $userId);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+
+        //Function about returning the number of posts the user had made on the forum
+        public function numberOfPagesUser($userId){
+            $resultsPerPage = 5;
+            
+            $stmt = $this->pdo->prepare('SELECT * FROM forumposts WHERE userid = :userid');
+            $stmt->bindParam(":userid", $userid);
+            $stmt->execute();
+            $posts = $stmt->fetchAll();
+            $numberOfPosts = count($posts);
+
+            $numberOfPages = ceil($numberOfPosts/$resultsPerPage);
+
+            return $numberOfPages;
+        }
         /*Functions about deleting posts & comments.*/
+
 
         //Delete news post function - Available only to the admin.
         public function deleteNewsPost($newsPostId){

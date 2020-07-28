@@ -2,9 +2,9 @@
     require "includes/Connection.php";
     include "includes/QueryBuilder.php";
     session_start();
-    if(isset($_SESSION['logged_in'])){
-        header("Location: index.php");
-    }
+    // if(isset($_SESSION['logged_in'])){
+    //     header("Location: index.php");
+    // }
     $conn = Connection::conn();
     $query = new QueryBuilder($conn);
     if(isset($_POST['registerButton'])){
