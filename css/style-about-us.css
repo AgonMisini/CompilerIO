@@ -1,0 +1,160 @@
+@import url("style-only-footer.css");
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgb(86,200,130);
+  background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 25px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1b1c25;
+  position: sticky;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+}
+
+#log-in-btn {
+  margin-left: auto;
+}
+
+ul, a {
+  display: flex;
+}
+
+li a {
+  padding: 10px 16px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease ;
+}
+
+.user-links li a:hover {
+  background-color: #fff;
+  color: #0a0a23;
+}
+
+.active {
+  background-color: #fff;
+  color: #0a0a23;
+}
+
+
+.container-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.container-column h1 {
+    border: 1px solid;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: monospace;
+}
+
+.container-2 {
+    width: 90%;
+}
+
+.project {
+    border: 1px solid;
+    padding: 10px;
+    margin: 10px 0 0;
+}
+
+.title h2 {
+    margin: 0;
+    font-family: monospace;
+    font-weight: 500;
+}
+
+hr {
+    background-color:#FFF;
+}
+
+.description {
+    padding: 10px;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(173, 173, 173);
+    border-radius: 5px;
+}
+
+.team {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.title-1 {
+    border: 1px solid;
+    padding: 10px;
+    font-family: monospace;
+    margin-bottom: 10px;
+}
+
+.title-1 h2  {
+    margin: 0;
+}
+
+.users {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-1, .user-2, .user-3 {
+    margin: 10px;
+    border: 1px solid;
+    padding: 10px;
+    width: 370px;
+}
+
+
+/** FOOTER */
+
+
+/* 
+footer {
+    display: flex;
+    flex-direction: row;
+    background: #303036;
+    color: #d3d3d3;
+    height: 100px;
+    position: relative;
+    clear: both;
+    padding: 20px;
+    align-items:center;
+    justify-content:center;
+}
+
+.footer{
+    background: #343a40;
+    color: #484848;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    bottom: 0px;
+    left: 0px;
+    padding-top: 20px;
+
+} */

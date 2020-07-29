@@ -1,0 +1,17 @@
+
+footer {
+  display: flex;
+  flex-direction: row;
+  color: #d3d3d3;
+  background: #343a40;
+  height: 50px;
+  text-align: center;
+  padding-top: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+footer div {
+  margin: 0 auto;
+}
+  

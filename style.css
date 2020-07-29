@@ -6,9 +6,12 @@
 }
 
 body {
-  font-family: 'Sriracha', cursive;
-  background-color: #1B1B32;
-  color: #f5f6d7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+  background: rgb(86,200,130);
+  background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
   font-size: 25px;
 }
 

@@ -3,29 +3,34 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/style-about-us.css">
 	<title>About Us</title>
 </head>
 <body>
-	<nav>
-		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">News</a></li>
-			<li><a href="#">Tutorial</a></li>
-            <li><a href="#" class="active">About Us</a></li>
-            <li><a href="contact-us.php">Contact Us</a></li>
-			<li><a href="#">Login - Register</a></li>
-		</ul>
-    </nav>
-    <div class="container">
+    <header>
+        <nav>
+            <ul class="user-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Tutorial</a></li>
+                <li><a href="#" class="active">About Us</a></li>
+                <li><a href="contact-us.php">Contact Us</a></li>
+                <li id="log-in-btn"><a href="#">Login - Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- CONTENT -->
+<main>
+    <div class="container-column">
         <h1>About Us</h1>
         <div class="container-2">
             <div class="project">
+                
                 <div class="title">
-                    <h2><strong>Our Project</strong></h2>
+                    <h2>Our Project</h2>
                 </div>
+                <hr>
                 <div class="description">
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quisquam expedita, laudantium magnam sed animi iusto impedit repudiandae est. Dolores, nostrum nobis! Veniam facilis, suscipit fugiat odit ipsam aut culpa?<br>
@@ -36,35 +41,47 @@
                     </p>
                 </div>
             </div>
+            <hr>
+
             <div class="team">
                 <div class="title-1">
                     <h2>Our Team</h2>
                 </div>
                 <div class="users">
                     <div class="user-1">
-                        <h4>Agon Misini</h4>
+                        <h4 style="font-family: monospace;">Agon Misini</h4>
                         <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+                        <hr>
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Error sunt corrupti, hic iusto facere mollitia eveniet iure labore inventore recusandae!
                         </p>
                     </div>
                     <div class="user-2">
-                        <h4>Ardit Islami</h4>
+                        <h4 style="font-family: monospace;">Ardit Islami</h4>
                         <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+                        <hr>
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam accusantium, in recusandae illum dignissimos voluptate cumque quo! Minima, laboriosam blanditiis.
                         </p>
                     </div>
                     <div class="user-3">
-                        <h4>Flamur Fazliu</h4>
+                        <h4 style="font-family: monospace;">Flamur Fazliu</h4>
                         <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+                        <hr>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure corporis alias esse facere id quidem commodi minima quibusdam placeat unde?
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto dolor modi doloribus officiis explicabo sapiente quam aliquam!
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    
+    <!-- FOOTER -->
+    <?php 
+        include 'includes/footer.php';
+    ?>
+
     </body>
     </html>

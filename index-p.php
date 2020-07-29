@@ -39,10 +39,11 @@
 			<li><a href="#" class="active">User</a></li>
 			<li><a href="about-us.php">About Us</a></li>
       <li><a href="contact-us.php">Contact Us</a></li>
-			<li id="log-in-btn"><a href="#" id="log-in-btn">Login / Register</a></li>
+			<li id="log-in-btn"><a href="#">Login / Register</a></li>
 		</ul>
   </nav>
   <!-- PROFILE -->
+<main>
   <div class="profile-card-column">
     <div class="profile-container">
       <div class="profile-info">
@@ -50,17 +51,7 @@
         <h3 class="username">john_doe</h3>
         <p class="user-bio" style="font-family: 'Segoe UI';"><span style="font-family: monospace; font-size: 25px; font-weight: 600; display: inline-block; margin: 5px 0;">Bio</span>
           <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, vero ad corrupti beatae fuga labore nesciunt magni tempora voluptatum consequuntur.</p>
-          <hr>
-        <div class="user-contacts">
-          <p style="font-family: monospace; font-size: 25px; font-weight: 600; display: inline-block; margin: 5px 0;">Contacts<br></p>
-              <ul class="user-social-ico go-middle">
-                <li>
-                  <a href="" class="social-ico"><i class="fab fa-twitter"></i></a>
-                  <a href=""><i class="fab fa-facebook-square"></i></a>
-                  <a href=""><i class="fab fa-git-alt"></i></a>
-                </li> 
-              </ul>
-        </div>
+          <hr style="margin: 15px 0 20px">
         <div class="user-buttons"> 
           <a href="#" class="myButton">Report User</a>
           <a href="#" class="myButton">Add Friend</a>
@@ -81,9 +72,9 @@
         <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
         <h4 style="align-self: center; padding: 0 10px;">Lorem Ipsum</h4>
       </div>
-      <hr style="margin: 10px 0;">
-      <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: left;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, saepe dolorem adipisci quo, perspiciatis a quia accusantium fugiat ab eligendi similique. Dignissimos placeat porro cupiditate dolorem provident! Quod, numquam neque?</p>
-   
+      <div class="content-user-post" >
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, saepe dolorem adipisci quo, perspiciatis a quia accusantium fugiat ab eligendi similique. Dignissimos placeat porro cupiditate dolorem provident! Quod, numquam neque?</p>
+      </div>
         <ul class="post-list-row">
           <li>
             <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -93,11 +84,20 @@
         </ul>
       </div>
     </div>
+    
     <div id="profile-settings" style="display: none;">
-          <p>test</p>
+      <form class="user-change-settings" method="POST">
+        <input type="text" class="user-input-form" placeholder="Type your Username here">
+        <input type="email" class="user-input-form" placeholder="Type your Email here">
+        <input type="password" class="user-input-form" placeholder="Type your new Password here">
+        <input type="password" class="user-input-form" placeholder="Confirm new Password">
+        <input class="user-submit-btn" type="submit" name="submit-changes"></input>
+      </form>
+        <br>
     </div>
   </div>
   </div>
+</main>
 </div>
 
 
@@ -113,8 +113,6 @@
         var v = document.getElementById("profileSettingsLink");
         z.setAttribute("class", "active");
         v.setAttribute("class","");
-
-        
     }
 
     function function2(){
@@ -129,8 +127,12 @@
 
         z.setAttribute("class", "active");
         v.setAttribute("class","");
-        
     }
 </script>
+
+    <!-- FOOTER -->
+    <?php 
+        include 'includes/footer.php';
+    ?>
 </body>
 </html>
