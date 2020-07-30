@@ -398,7 +398,7 @@
             $resultsPerPage = 5;
             
             $stmt = $this->pdo->prepare('SELECT * FROM forumposts WHERE userid = :userid');
-            $stmt->bindParam(":userid", $userid);
+            $stmt->bindParam(":userid", $userId);
             $stmt->execute();
             $posts = $stmt->fetchAll();
             $numberOfPosts = count($posts);

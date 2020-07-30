@@ -1,10 +1,48 @@
+
+<?php
+    require_once "Connection.php";
+    require_once "QueryBuilder.php";
+    $conn = Connection::conn();
+    $query = new QueryBuilder($conn);
+    if(isset($_SESSION['logged_in'])){
+        $userInformation = $conn->query("SELECT * FROM users WHERE id = " . $_SESSION['userId']);
+        foreach($userInformation as $user){
+            $userId = $user['id'];
+            $username = $user['username'];
+            $admin = $user['admin'];
+        }
+    }
+    $activePage = basename($_SERVER['PHP_SELF'], ".php");
+
+    if(isset($_POST['logoutButton'])){
+        $query->logout();
+    }
+?>
 <nav>
     <ul class="user-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">News</a></li>
-        <li><a href="#">Tutorial</a></li>
-    <li><a href="about-us.php">About Us</a></li>
-    <li><a href="contact-us.php" class="active">Contact Us</a></li>
-        <li id="log-in-btn"><a href="#">Login - Register</a></li>
+        <li><a href="index.php" class="<?= ($activePage == 'index') ? 'active':''; ?>">Home</a></li>
+        <li><a href="index.php" class="<?= ($activePage == 'index') ? 'active':''; ?>">News</a></li>
+        <li><a href="tutorials.php" class="<?= ($activePage == 'tutorials') ? 'active':''; ?>">Tutorial</a></li>
+        <li><a href="about-us.php" class="<?= ($activePage == 'about-us') ? 'active':''; ?>">About Us</a></li>
+        <li><a href="contact-us.php" class="<?= ($activePage == 'contact-us') ? 'active':''; ?>">Contact Us</a></li>
+        <?php
+            if(isset($_SESSION['admin'])){
+                if($admin){
+                    echo '<li><a href="messages.php" class="<?= ($activePage == "messages.php") ? "active":""; ?>Messages</a></li>';
+                }
+            }
+            
+        ?>
+        
+        <?php 
+            if(isset($_SESSION['logged_in'])){
+                echo '<li id="log-in-btn"><a href="index-p.php?id=' . $userId . '" class="<?= ($activePage == "messages.php") ? "active":""; ?>Welcome ' . $username . '</a></li>';
+                echo "<form method='POST'>";
+                echo '<button class="myLogoutButton" name="logoutButton">Logout</button>';
+                echo "</form>";
+            }else{
+                echo '<li id="log-in-btn"><a href="index-l.php" class="<?= ($activePage == "index-r.php" || $activePage == "index-l.php") ? "active":""; ?>Login - Register</a></li>';
+            }
+        ?>
     </ul>
 </nav>

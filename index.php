@@ -15,6 +15,8 @@
     <title>Document</title>
 </head>
 <body>
-
+    <?php 
+        include "includes/Navigation-bar.php";
+    ?>
 </body>
 </html>
