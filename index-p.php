@@ -31,17 +31,16 @@
 <body>
 <div class="body-column">
   <!-- NAVBAR -->
-  <nav>
-		<ul class="user-links">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">News</a></li>
-			<li><a href="#">Tutorial</a></li>
-			<li><a href="#" class="active">User</a></li>
-			<li><a href="about-us.php">About Us</a></li>
-      <li><a href="contact-us.php">Contact Us</a></li>
-			<li id="log-in-btn"><a href="#">Login / Register</a></li>
-		</ul>
-  </nav>
+  <?php include '';
+  
+  // if($_SESSION['admin'] == 1){
+  //     include "includes/Admin-Navigation-Bar.php";
+  // }else{
+  //     include "includes/Navigation-Bar.php" ;
+  // }
+
+  ?>
+
   <!-- PROFILE -->
 <main>
   <div class="profile-card-column">
@@ -85,15 +84,17 @@
       </div>
     </div>
     
-    <div id="profile-settings" style="display: none;">
+    <div class="user-form-column go-middle" id="profile-settings" style="display: none;">
+      <hr id="user-hr">
       <form class="user-change-settings" method="POST">
-        <input type="text" class="user-input-form" placeholder="Type your Username here">
-        <input type="email" class="user-input-form" placeholder="Type your Email here">
-        <input type="password" class="user-input-form" placeholder="Type your new Password here">
-        <input type="password" class="user-input-form" placeholder="Confirm new Password">
-        <input class="user-submit-btn" type="submit" name="submit-changes"></input>
+        <div class="username-ch user-form-input">
+            <input type="text name="username" id="username" placeholder="Enter your Username">
+            <input type="email" name="email" id="email" placeholder="Enter your Email">
+            <input type="password" name="password" id="new" placeholder="Enter your new Password">
+            <input type="password" name="password" id="old" placeholder="Confirm Password">
+            <input class="user-submit-btn" type="submit" name="submit-changes"></input>
+        </div>
       </form>
-        <br>
     </div>
   </div>
   </div>
@@ -105,9 +106,12 @@
     function function1(){
         var x = document.getElementById("user-post-info");
         var y = document.getElementById("profile-settings");
+        var btn = document.getElementById("user-buttons");
+
 
         x.style.display = "block";
         y.style.display = "none";
+
 
         var z = document.getElementById("postsLink");
         var v = document.getElementById("profileSettingsLink");
@@ -127,12 +131,13 @@
 
         z.setAttribute("class", "active");
         v.setAttribute("class","");
+
+
     }
 </script>
 
     <!-- FOOTER -->
-    <?php 
-        include 'includes/footer.php';
-    ?>
+    <?php include 'includes/footer.php'; ?>
+
 </body>
 </html>

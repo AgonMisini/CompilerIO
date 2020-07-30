@@ -1,0 +1,66 @@
+@import url("style-only-footer.css");
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgb(86,200,130);
+  background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 25px;
+  position: relative;
+  min-height: 100%;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1b1c25;
+  position: sticky;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+}
+
+#log-in-btn {
+  margin-left: auto;
+}
+
+ul, a {
+  display: flex;
+}
+
+li a {
+  padding: 10px 16px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease ;
+}
+
+.user-links li a:hover {
+  background-color: #fff;
+  color: #0a0a23;
+}
+
+.active {
+  background-color: #fff;
+  color: #0a0a23;
+}
+
+#my-message {
+    font-family: monospace;
+    font-weight: 400;
+    text-align: center;
+}
