@@ -81,8 +81,8 @@
                 <div class="main-topic-content-menu go-row">
                     <ul class="go-row">
                         <li class="content-menu-button"><a href=""><i class="far fa-heart"></i></a></li>
-                        <li class="content-menu-button"><a href=""><i class="far fa-comments"></i></a></li>
-                        <li class="content-menu-button"><a href=""><i class="fas fa-share"></i></a></li>
+                        <!-- <li class="content-menu-button"><a href=""><i class="far fa-comments"></i></a></li>
+                        <li class="content-menu-button"><a href=""><i class="fas fa-share"></i></a></li> -->
                     </ul>
                 </div>
                 <div class="go-row">

@@ -64,3 +64,6 @@ li a {
     font-weight: 400;
     text-align: center;
 }
+.messages-container{
+  margin: 0 auto;
+}

@@ -440,9 +440,10 @@
         //Delete forum post function - Available to the user who posted it and to an admin.
         public function deleteForumPost($forumPostId, $category){
             $stmt = $this->pdo->query("DELETE FROM forumcomment WHERE forumpostid = " . $forumPostId);
+            $stmt = $this->pdo->query("DELETE FROM forumpost_user_like WHERE forumpostid = " . $forumPostId);
             $stmt = $this->pdo->query("DELETE FROM forumposts WHERE id = " . $forumPostId);
             
-            header("Location: forum.php?category=" . $category);
+            header("Location: index-subforum.php?category=" . $category . "&orderBy=Newest&page=1");
         }
         //Delete a forum post comment - Available to the user who commented and to an admin.
         public function deleteForumComment($forumCommentId){

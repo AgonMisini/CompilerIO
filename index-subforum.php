@@ -59,7 +59,8 @@
                 echo "HTML topics";
             }
          ?></h1>
-        <select name="" id="" onchange="if(this.value != '') document.location = '/compilerio/CompilerIO/index-subforum.php?orderBy=' + this.value + '&category=' + category + '&page=' + page " style="color: black;">
+        <span style="margin-top: 10px;">Sort by: </span>
+        <select name="" id="" onchange="if(this.value != '') document.location = '/compilerio/index-subforum.php?orderBy=' + this.value + '&category=' + category + '&page=' + page " style="color: black; width:15vw;">
             <option value=""style="color: black;">Sort by</option>
             <option value="Newest"<?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Newest') echo 'selected="selected"' ?> style="color: black;">Newest</option>
             <option value="Oldest" <?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Oldest') echo 'selected="selected"' ?> style="color: black;">Oldest</option>
