@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="css/style-subforum.css">
     <script type="text/javascript">
         var category=<?php echo json_encode($category); ?>;
+        var page=<?php echo json_encode($_GET['page']); ?>
     </script>
 </head>
 <body>
@@ -47,13 +48,22 @@
     <?php include "includes/Navigation-bar.php";?>
 
     <div class="container-forum-topic go-column">
-        <h1 id="main-forum-category-title">HTML Topic</h1>
-        <p id="main-forum-category-subtitle">In this topic we will discuss only about HTML</p>
-        <select name="" id="" onchange="if(this.value != '') document.location = '/compilerio/index-subforum.php?orderBy=' + this.value + '&category=' + category ">
-            <option value="">Sort by</option>
-            <option value="Newest"<?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Newest') echo 'selected="selected"' ?>>Newest</option>
-            <option value="Oldest" <?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Oldest') echo 'selected="selected"' ?>>Oldest</option>
-            <option value="Most_popular"<?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Most_popular') echo 'selected="selected"' ?>>Most popular</option>
+        <h1 id="main-forum-category-title"><?php
+            if($_GET['category'] == "general"){
+                echo "General";
+            }else if($_GET['category']== "codingQuestions"){
+                echo "Coding questions";
+            }else if($_GET['category'] == "codingChallenges"){
+                echo "Coding challenges";
+            }else if($_GET['category'] == "htmlTopics"){
+                echo "HTML topics";
+            }
+         ?></h1>
+        <select name="" id="" onchange="if(this.value != '') document.location = '/compilerio/CompilerIO/index-subforum.php?orderBy=' + this.value + '&category=' + category + '&page=' + page " style="color: black;">
+            <option value=""style="color: black;">Sort by</option>
+            <option value="Newest"<?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Newest') echo 'selected="selected"' ?> style="color: black;">Newest</option>
+            <option value="Oldest" <?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Oldest') echo 'selected="selected"' ?> style="color: black;">Oldest</option>
+            <option value="Most_popular"<?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Most_popular') echo 'selected="selected"' ?> style="color: black;">Most popular</option>
         </select>
 
         <hr>

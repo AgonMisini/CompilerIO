@@ -34,8 +34,8 @@
             <h1>Login</h1>
             <div class="input-group">
                 <form method="POST">
-                    <input type="text" id="email" name="username" class="email-field" placeholder="Enter your username..." required>
-                    <input type="password" id="password" name="password" class="password-field" placeholder="Enter your password..." required>
+                    <input type="text" id="email" name="username" class="email-field" placeholder="Enter your username..." required style="color: black;">
+                    <input type="password" id="password" name="password" class="password-field" placeholder="Enter your password..." required style="color: black;">
                     <div class="checkbox-style">
                         <input type="checkbox" id="checkbox" class="check-box">
                         <label for="checkbox">Remember my password</label>

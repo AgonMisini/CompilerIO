@@ -49,7 +49,11 @@
 
                     <div class="forum-posts-sum-container go-row align-right">
                         <dl class="forum-posts-sum go-column">
-                            <dt>(Number of posts)</dt>
+                            <dt><?php 
+                                $stmt = $conn->query("SELECT * FROM forumposts WHERE category = 'general';");
+                                $numberOfPosts = count($stmt->fetchAll());
+                                echo $numberOfPosts;
+                            ?></dt>
                             <dd>posts</dd>
                         </dl>
                     </div>
@@ -72,7 +76,11 @@
 
                     <div class="forum-posts-sum-container go-row align-right">
                         <dl class="forum-posts-sum go-column">
-                            <dt>(Number of posts)</dt>
+                            <dt><?php 
+                                $stmt = $conn->query("SELECT * FROM forumposts WHERE category = 'codingQuestions';");
+                                $numberOfPosts = count($stmt->fetchAll());
+                                echo $numberOfPosts;
+                            ?></dt>
                             <dd>posts</dd>
                         </dl>
                     </div>
@@ -95,7 +103,11 @@
 
                     <div class="forum-posts-sum-container go-row align-right">
                         <dl class="forum-posts-sum go-column">
-                            <dt>(Number of posts)</dt>
+                            <dt><?php 
+                                $stmt = $conn->query("SELECT * FROM forumposts WHERE category = 'codingChallenges';");
+                                $numberOfPosts = count($stmt->fetchAll());
+                                echo $numberOfPosts;
+                            ?></dt>
                             <dd>posts</dd>
                         </dl>
                     </div>
@@ -118,7 +130,11 @@
 
                     <div class="forum-posts-sum-container go-row align-right">
                         <dl class="forum-posts-sum go-column">
-                            <dt>(Number of posts)</dt>
+                            <dt><?php 
+                                $stmt = $conn->query("SELECT * FROM forumposts WHERE category = 'htmlTopics';");
+                                $numberOfPosts = count($stmt->fetchAll());
+                                echo $numberOfPosts;
+                            ?></dt>
                             <dd>posts</dd>
                         </dl>
                     </div>

@@ -101,7 +101,7 @@
                         ?>
 
                         <div class="user-comment align-center go-row">
-                            <img class="user-profile-pic" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8phkso4Vu62KfrmNZcSqGAHaHa%26pid%3DApi&f=1" alt="User Profile Pic">
+                            <img class="user-profile-pic" src="<?php echo $profilepic; ?>" alt="User Profile Pic">
 
                             <div class="user-comment-container go-column">
                                 <div class="user-comment-content">
