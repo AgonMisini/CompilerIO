@@ -1,5 +1,7 @@
-<form action="" method="POST">
-    <input type="text" name="title" placeholder="Put your title here">
-    <input type="text" name="text-content" placeholder="Add your content here">
-    <input type="submit" name="submit">
-</form>
+<div class="commentBoxContainer">
+    <form method="POST">
+        <textarea class="comment2" name="commentTextArea"></textarea>
+        <br>
+        <input class="commentButton"type="submit" name="submitComment" value="Comment" style="color: black;">
+    </form>
+</div>

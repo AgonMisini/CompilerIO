@@ -5,7 +5,39 @@
     $conn = Connection::conn();
     $query = new QueryBuilder($conn);
     // var_dump($_SESSION);
-   
+    $stmt = $conn->prepare("SELECT userid FROM forumposts WHERE id = :id");
+    $stmt->execute([
+        ":id"=>$_GET['id']
+    ]);
+    $theUserId = $stmt->fetchColumn();
+    $user = $query->selectAllWhere("users", "id", $theUserId);
+
+    foreach($user as $user){
+        $userId = $user['id'];
+        $usernameOP = $user['username'];
+        $profilepicture = $user['profilepic'];
+    }
+    $forumPost = $query->selectAllWhere("forumposts", "id", $_GET['id']);
+    foreach($forumPost as $forumPost){
+        $title = $forumPost['forumposttitle'];
+        $content = $forumPost['forumpostcontent'];
+        $date = date('h:m:s A M/d', strtotime($forumPost['timeposted']));
+        $likes = $forumPost['likes'];
+    }
+    $stmt = $conn->prepare("SELECT * FROM forumcomment WHERE forumpostid = :id ORDER BY timecommented DESC");
+    $stmt->bindParam(":id", $_GET['id']);
+    $stmt->execute();
+    $comments = $stmt->fetchAll();
+    $commentCount = count($comments);
+
+    if(isset($_POST['submitComment'])){
+        $commentContent = $_POST['commentTextArea'];
+        $forumId = $_GET['id'];
+        $userID = $_SESSION['userId'];
+
+        $forumArrayInfo = array($forumId, $userID, $commentContent);
+        $query->insertForumComment($forumArrayInfo,$_GET['category']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,23 +57,26 @@
 
 
                 <!-- Useri qe e ka kriju topickun -->
-                <img class="topic-user-profile-pic" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8phkso4Vu62KfrmNZcSqGAHaHa%26pid%3DApi&f=1" alt="User Profile Pic">
+                <img class="topic-user-profile-pic" src="<?php echo $profilepicture; ?>" alt="User Profile Pic">
 
             <div class="go-column width">
             <div class="go-column main-user-post">
                 <div class="go-row">
-                    <h1 id="main-forum-category-title">Can somebudy show me how to make a HTML Form?</h1>
-                    <span class="user-additional-info align-righ" id="user-topic-name">Topic Created by : (Name of Creator), 
-                        <span class="user-additional-info">In HTML Category | 
-                            <span class="user-additional-info" id="sum-of-replies">N replies 
+                    <h1 id="main-forum-category-title"><?php echo $title; ?></h1>
+                    <span class="user-additional-info align-righ" id="user-topic-name">Topic Created by : <a style="color: #6495ED;" href="index-p.php?id=<?php echo $userId ?>" ><?php echo $usernameOP; ?></a>, 
+                        <span class="user-additional-info"> in <?php echo $_GET['category']; ?> category | 
+                            <span class="user-additional-info" id="sum-of-replies"><?php 
+                                echo $commentCount . " replies";
+                            ?> 
+                            </span>
+                            <span>
+                                <?php echo "|  Likes: " . $likes;  ?>
                             </span>
                         </span>
                     </span>
                 </div>
                 <hr style="margin: 10px 0 10px;">
-                <p class="main-user-post-content">I have forgotten how to make one Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolorem quaerat fuga harum, aliquid exercitationem dignissimos quidem. Architecto, iusto inventore.</p>
-
-
+                <p class="main-user-post-content"><?php echo $content; ?></p>
             </div>
                 <div class="main-topic-content-menu go-row">
                     <ul class="go-row">
@@ -55,27 +90,43 @@
                 </div>
 
                 <div class="main-comments">
-                    <div class="user-comment align-center go-row">
-                        <img class="user-profile-pic" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8phkso4Vu62KfrmNZcSqGAHaHa%26pid%3DApi&f=1" alt="User Profile Pic">
-
-                        <div class="user-comment-container go-column">
-                            <div class="user-comment-content">
-                                <div class="go-row">
-                                <h4>John Doe | <span class="date">[DATE HERE]</span></h4>
+                    <?php foreach($comments as $comment): ?>
+                        <?php 
+                            $userinformation = $query->selectAllWhere("users","id", $comment['userid']);
+                            foreach($userinformation as $user){
+                                $username = $user['username'];
+                                $profilepic = $user['profilepic'];
                                 
+                            }    
+                        ?>
 
+                        <div class="user-comment align-center go-row">
+                            <img class="user-profile-pic" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.8phkso4Vu62KfrmNZcSqGAHaHa%26pid%3DApi&f=1" alt="User Profile Pic">
+
+                            <div class="user-comment-container go-column">
+                                <div class="user-comment-content">
+                                    <div class="go-row">
+                                    <h4><?php echo $username; ?> | <span class="date"><?php echo date('h:m:s A M/d', strtotime($comment['timecommented'])); ?></span></h4>
+                                    
+
+                                    </div>
+                                    <hr style="margin: 5px 0 0;">  
+
+                                    <p><?php echo $comment['forumcomment']; ?></p>
                                 </div>
-                                <hr style="margin: 5px 0 0;">  
 
-                                <p>yada yada yada</p>
+                                <ul class="go-row align-center">
+                                    <li class="content-menu-button"><a href=""><i class="far fa-comments"></i></a></li>
+                                </ul>
                             </div>
-
-                            <ul class="go-row align-center">
-                                <li class="content-menu-button"><a href=""><i class="far fa-comments"></i></a></li>
-                            </ul>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
+                <?php 
+                    if(isset($_SESSION['logged_in'])){
+                        include "includes/comment.php";
+                    }
+                ?>
             </div>
         </div>
 

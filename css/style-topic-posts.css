@@ -276,3 +276,23 @@ hr {
     font-size: 15px;
     align-self: center;
 }
+
+.commentBoxContainer{
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+}
+.commentButton{
+  margin: 0 auto;
+  padding: 7px;
+}
+.comment2 {
+  width: 20%;
+  height: 100px;
+  padding: 10px;
+  background-color: #F3F3F3;
+  font-size: 14px;
+  color: black;
+  border-radius: 15px;
+  outline: none;
+}

@@ -32,6 +32,7 @@
                 </li>
             </ol>
 
+            
             <ol class="subforums-list">
                 <li class="subforum-link go-row">
                     <div class="forum-ico">
@@ -39,11 +40,12 @@
                     </div>
 
                     <div class="forum-main">
-                        <a href="index-subforum.php" id="main-forum-title">HTML Topic</a>
+                        <a href="index-subforum.php?category=general&orderBy=Newest&page=1" id="main-forum-title">General</a>
                         <div>
-                        In this topic we will discuss only about HTML
+                        <p>Everything goes, talk to your hearts content</p>
                         </div>
                     </div>
+                    
 
                     <div class="forum-posts-sum-container go-row align-right">
                         <dl class="forum-posts-sum go-column">
@@ -51,6 +53,76 @@
                             <dd>posts</dd>
                         </dl>
                     </div>
+                    
+                </li>
+            </ol>
+            <ol class="subforums-list">
+                <li class="subforum-link go-row">
+                    <div class="forum-ico">
+
+                    </div>
+
+                    <div class="forum-main">
+                        <a href="index-subforum.php?category=codingQuestions&orderBy=Newest&page=1" id="main-forum-title">Coding questions</a>
+                        <div>
+                            <p>Posts regarding problems the users have with their code</p>
+                        </div>
+                    </div>
+                    
+
+                    <div class="forum-posts-sum-container go-row align-right">
+                        <dl class="forum-posts-sum go-column">
+                            <dt>(Number of posts)</dt>
+                            <dd>posts</dd>
+                        </dl>
+                    </div>
+                    
+                </li>
+            </ol>
+            <ol class="subforums-list">
+                <li class="subforum-link go-row">
+                    <div class="forum-ico">
+
+                    </div>
+
+                    <div class="forum-main">
+                        <a href="index-subforum.php?category=codingChallenges&orderBy=Newest&page=1" id="main-forum-title">Coding challenges</a>
+                        <div>
+                        <p>Posts where users post exciting challenges</p>
+                        </div>
+                    </div>
+                    
+
+                    <div class="forum-posts-sum-container go-row align-right">
+                        <dl class="forum-posts-sum go-column">
+                            <dt>(Number of posts)</dt>
+                            <dd>posts</dd>
+                        </dl>
+                    </div>
+                    
+                </li>
+            </ol>
+            <ol class="subforums-list">
+                <li class="subforum-link go-row">
+                    <div class="forum-ico">
+
+                    </div>
+
+                    <div class="forum-main">
+                        <a href="index-subforum.php?category=htmlTopics&orderBy=Newest&page=1" id="main-forum-title">HTML Topic</a>
+                        <div>
+                        In this topic we will discuss only about HTML
+                        </div>
+                    </div>
+                    
+
+                    <div class="forum-posts-sum-container go-row align-right">
+                        <dl class="forum-posts-sum go-column">
+                            <dt>(Number of posts)</dt>
+                            <dd>posts</dd>
+                        </dl>
+                    </div>
+                    
                 </li>
             </ol>
         </section>

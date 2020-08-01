@@ -201,7 +201,7 @@
             }
         }
         //Query for inserting a forum post
-        public function insertForumPost($table, $forumPostInformation){
+        public function insertForumPost($forumPostInformation, $orderBy){
             $currPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
             $userId = $forumPostInformation[0];
             $forumPostTitle = $forumPostInformation[1];
@@ -209,10 +209,10 @@
             $category = $forumPostInformation[3];
             //Check if the fields are empty.
             if(empty($forumPostTitle) || empty($forumPostContent || empty($category))){
-                header("Location: " . $currPageName . "?error=emptyFields");
+                header("Location: " . $currPageName . "?error=emptyFields&category=" . $category . "&id=" . $userId);
                 exit();
             }else if(strlen($forumPostContent) > 4999){
-                header("Location: " . $currPageName . "?error=postTooLong");
+                header("Location: " . $currPageName . "?error=postTooLong&category=" . $category . "&id=" . $userId);
                 exit();
             }else{
                 //Insert forum post
@@ -222,17 +222,17 @@
                 $stmt->bindParam(":forumpostcontent",$forumPostContent);
                 $stmt->bindParam(":category", $category);
                 $stmt->execute();   
-                header("Location: index.php?success");
+                header("Location: index-subforum.php?success=postAdded&category=" . $category . "&id=" . $userId . "&orderBy=" . $orderBy . "&page=1");
             }
         }
         //Query for inserting a comment on a forum post
-        public function insertForumComment($table, $forumCommentInformation){
+        public function insertForumComment($forumCommentInformation, $category){
             $forumPostId = $forumCommentInformation[0];
             $userId = $forumCommentInformation[1];
             $forumComment = $forumCommentInformation[2];
             //Check if field is empty
             if(empty($forumComment)){
-                header("Location: forumPost.php?error=emptyField");
+                header("Location: index-forum-topic-posts.php?id=" . $forumPostId . "&category=" . $category . "&error=emptyFields");
                 exit();
             }else{
                 //Insert forum post comment
@@ -241,8 +241,7 @@
                 $stmt->bindParam(":userid", $userId);
                 $stmt->bindParam(":forumcomment",$forumComment);
                 $stmt->execute();
-                header("Location: forumPost.php?");
-                exit();
+                header("Location: index-forum-topic-posts.php?id=" . $forumPostId . "&category=" . $category);
             }
         }
         //Query for liking a forum post while checking if the post has been liked by the same person before.

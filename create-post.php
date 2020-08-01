@@ -1,5 +1,18 @@
 <?php 
+    require "includes/Connection.php";
+    require "includes/QueryBuilder.php";
+    session_start();
+    $conn = Connection::conn();
+    $query = new QueryBuilder($conn);
 
+    if(isset($_POST['submit'])){
+        $title = $_POST['title'];
+        $content = $_POST['post-content'];
+        $orderBy = $_GET['orderBy'];
+        
+        $forumPostInformation = array($_GET['id'], $title, $content, $_GET['category']);
+        $query->insertForumPost($forumPostInformation, $orderBy);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
