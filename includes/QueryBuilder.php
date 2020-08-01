@@ -62,7 +62,7 @@
                     exit();
                 }else{
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                    $stmt = $this->pdo->prepare("INSERT INTO users (username, email, password, profilepic, admin) VALUES (:username, :email, :password, 'profilepicture/default.jpg', 0)");
+                    $stmt = $this->pdo->prepare("INSERT INTO users (username, email, password, profilepic, admin, bio) VALUES (:username, :email, :password, 'profilepicture/default.jpg', 0, '')");
                     $stmt->bindParam(":username", $username);
                     $stmt->bindParam(":email", $email);
                     $stmt->bindParam(":password", $hashedPassword);
@@ -83,6 +83,19 @@
                     }
                     header("Location: index.php?success=accountCreated");
                 }
+            }
+        }
+        public function insertBio($userId, $bio){
+            if(empty($bio)){
+                header("Location: index-p.php?id=" . $userId . "&error=emptyBioField");
+            }else if(strlen($bio) > 160){
+                header("Location: index-p.php?id=" . $userId . "&error=bioExceedingCharacterLimit");
+            }else{
+                $stmt = $this->pdo->prepare("UPDATE users SET bio = :bio WHERE id = :id");
+                $stmt->bindParam(":bio", $bio);
+                $stmt->bindParam(":id", $userId);
+                $stmt->execute();
+                header("Location: index-p.php?id=" . $userId . "&success=bioAdded");
             }
         }
         //Function for logging out.
@@ -450,7 +463,7 @@
             $userId = $userInformation[4];
             
             if(empty($username) && empty($email) && empty($password) && empty($confirmPassword)){
-                header("Location: index.php?allfieldsempty");
+                header("Location: index-p.php?error=emptyFields&id=" . $userId);
                 exit;
             }
             $stmt = $this->pdo->prepare('SELECT id FROM users WHERE username = :username');
@@ -459,7 +472,7 @@
             $dbUserIdUsername = $stmt->fetchColumn();
 
             if($dbUserIdUsername != $userId && $dbUserIdUsername != false){
-                    header("Location: index.php?usernameAlreadyTaken");
+                    header("Location: index-p.php?error=usernameTaken&id=" . $userId);
                     exit();
             }
             $stmt = $this->pdo->prepare('SELECT id FROM users WHERE email = :email');
@@ -468,7 +481,7 @@
             $dbUserIdEmail = $stmt->fetchColumn();
             var_dump($dbUserIdEmail);
             if($dbUserIdEmail != $userId && $dbUserIdEmail != false){
-                    header("Location: index.php?emailAlreadyTaken");
+                    header("Location: index-p.php?error=emailTaken&id=" . $userId);
                     exit();
             }
 
@@ -479,13 +492,13 @@
                 $stmt->execute();
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $email;
-                header("Location: index.php?success");
+                header("Location: index-p.php?success=successfulChange&id=" . $userId);
                 exit();
             }else if($password != $confirmPassword){
-                header("Location: index.php?passwordsDontMatch");
+                header("Location: index-p.php?error=passwordDoesntMatch&id=" . $userId);
                 exit();
             }else if(strlen($password) < 8 || strlen($password) > 26){
-                header("Location: index.php?error=passwordTooShortOrTooLong");
+                header("Location: index-p.php?error=passwordTooShortOrTooLong&id=" . $userId);
                 exit();
             }else{
                 $stmt = $this->pdo->prepare('SELECT password FROM users WHERE id = :userId');
@@ -493,7 +506,7 @@
                 $stmt->execute();
                 $dbPassword = $stmt->fetchColumn();
                 if(password_verify($password, $dbPassword)){
-                    header("Location: index.php?samePasswordAsBefore");
+                    header("Location: index-p.php?error=samePasswordAsBefore&id=" . $userId);
                     exit();
                 }else{
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -507,7 +520,7 @@
                     $_SESSION['username'] = $username;
                     $_SESSION['email'] = $email;
 
-                    header("Location: index.php?successProfileInformationChange");
+                    header("Location: index-p.php?success=successfulChange&id=" . $userId);
                     exit();
                 }
             }
@@ -515,7 +528,7 @@
         //Function about changing your profile picture
         public function changeProfilePicture($userId){
             $photo = $_FILES['photo']['name'];
-            $profilepic = "profilepictures/".basename($photo);
+            $profilepic = "profilepicture/".basename($photo);
             $stmt = $this->pdo->prepare("UPDATE users SET profilepic = :profilepic WHERE id = :userId");
 		    $stmt->bindParam(":profilepic", $profilepic);
 		    $stmt->bindParam(":userId", $userId);
@@ -524,10 +537,10 @@
             if(move_uploaded_file($_FILES['photo']['tmp_name'], $profilepic)) {
                 $msg = "Image uploaded successfully";
                 // header ('Location: profilepage.php?userId=' . $userId);
-                header("Location: index.php?success=profilePicChanged");
+                header("Location: index-p.php?success=profilePicChanged&id=" . $userId);
             }else{
                 $msg = "Failed to upload image";
-                header ('Location: index.php?error=failedToUploadImage');
+                header ('Location: index-p.php?error=failedToUploadImage&id=' . $userId);
             }
         }
         //Function about deleting an entire user along with his posts, comments. -TODO- Figure out how to delete the profile picture too.
@@ -553,10 +566,7 @@
 
             //Deletes the forum comments the user has made.
             $stmt = $this->pdo->query('DELETE FROM forumcomment WHERE userid = ' . $userId);
-
-            //Deletes the contact messages the user has sent.
-            $stmt = $this->pdo->query('DELETE FROM contactmessages WHERE userid = ' . $userId);
-
+        
             //And finally delete the user and send them back to the main page. If the user deactivated his account then we unset the session and destroy it.
             if($_SESSION['userId'] == $userId){
                 session_unset();

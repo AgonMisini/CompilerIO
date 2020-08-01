@@ -22,7 +22,7 @@
     <ul class="user-links">
         <li><a href="index.php" class="<?= ($activePage == 'index') ? 'active':''; ?>">Home</a></li>
         <li><a href="index.php" class="<?= ($activePage == 'index') ? 'active':''; ?>">News</a></li>
-        <li><a href="tutorials.php" class="<?= ($activePage == 'tutorials') ? 'active':''; ?>">Tutorial</a></li>
+        <li><a href="tutorials.php" class="<?= ($activePage == 'tutorials') ? 'active':''; ?>">Tutorials</a></li>
         <li><a href="about-us.php" class="<?= ($activePage == 'about-us') ? 'active':''; ?>">About Us</a></li>
         <li><a href="contact-us.php" class="<?= ($activePage == 'contact-us') ? 'active':''; ?>">Contact Us</a></li>
         <?php
@@ -36,7 +36,11 @@
         
         <?php 
             if(isset($_SESSION['logged_in'])){
-                echo '<li id="log-in-btn"><a href="index-p.php?id=' . $userId . '" class="<?= ($activePage == "messages.php") ? "active":""; ?>Welcome ' . $username . '</a></li>';
+                if($activePage == "index-p"){
+                    echo '<li id="log-in-btn"><a href="index-p.php?id=' . $userId . '" class="active">'  . 'Welcome ' . $username . '</a></li>';
+                }else{
+                    echo '<li id="log-in-btn"><a href="index-p.php?id=' . $userId . '">'  . 'Welcome ' . $username . '</a></li>';
+                }
                 echo "<form method='POST'>";
                 echo '<button class="myLogoutButton" name="logoutButton">Logout</button>';
                 echo "</form>";
