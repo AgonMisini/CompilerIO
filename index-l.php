@@ -22,20 +22,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="l-style.css">
+    <link rel="stylesheet" href="css/l-style.css">
     <title>Login - Register</title>
 </head>
 <body>
-    <nav>
-		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">News</a></li>
-			<li><a href="#">Tutorial</a></li>
-			<li><a href="..\User\index.html">User</a></li>
-			<li><a href="..\About Us\index.html" >About Us</a></li>
-			<li><a href="#" class="active">Login - Register</a></li>
-		</ul>
-    </nav>
+    <!-- NAVBAR -->
+    <?php include "includes/Navigation-bar.php";?>
 
     <div class="container">
         <div class="form-box">
@@ -44,9 +36,9 @@
                 <form method="POST">
                     <input type="text" id="email" name="username" class="email-field" placeholder="Enter your username..." required>
                     <input type="password" id="password" name="password" class="password-field" placeholder="Enter your password..." required>
-                    <div>
+                    <div class="checkbox-style">
                         <input type="checkbox" id="checkbox" class="check-box">
-                        <label for="checkbox">Remember my password.</label>
+                        <label for="checkbox">Remember my password</label>
                     </div>
                     <button class="btn" type="submit" name="loginButton">Login</button>
                 </form>
@@ -57,5 +49,8 @@
             </div>
         </div>
     </div>
+
+     <!-- FOOTER -->
+     <?php include 'includes/footer.php'; ?>
 </body>
 </html>

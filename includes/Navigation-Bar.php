@@ -19,12 +19,13 @@
     }
 ?>
 <nav>
-    <ul class="user-links">
-        <li><a href="index.php" class="<?= ($activePage == 'index') ? 'active':''; ?>">Home</a></li>
-        <li><a href="index.php" class="<?= ($activePage == 'index') ? 'active':''; ?>">News</a></li>
-        <li><a href="tutorials.php" class="<?= ($activePage == 'tutorials') ? 'active':''; ?>">Tutorials</a></li>
-        <li><a href="about-us.php" class="<?= ($activePage == 'about-us') ? 'active':''; ?>">About Us</a></li>
-        <li><a href="contact-us.php" class="<?= ($activePage == 'contact-us') ? 'active':''; ?>">Contact Us</a></li>
+    <ul class="user-list-links">
+            <li class="user-links"><a href="index.php" class="<?= ($activePage == 'index') ? 'active':''; ?>">Home</a></li>
+            <li class="user-links"><a href="index.php" class="<?= ($activePage == 'index') ? 'active':''; ?>">News</a></li>
+            <li class="user-links"><a href="tutorials.php" class="<?= ($activePage == 'tutorials') ? 'active':''; ?>">Tutorial</a></li>
+            <li class="user-links"><a href="about-us.php" class="<?= ($activePage == 'about-us') ? 'active':''; ?>">About Us</a></li>
+            <li class="user-links"><a href="contact-us.php" class="<?= ($activePage == 'contact-us') ? 'active':''; ?>">Contact Us</a></li>
+
         <?php
             if(isset($_SESSION['admin'])){
                 if($admin){

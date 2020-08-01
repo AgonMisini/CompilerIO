@@ -1,0 +1,156 @@
+@import url("style-only-footer.css");
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: white;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 25px;
+  padding:0;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1b1c25;
+  position: sticky;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+}
+
+#log-in-btn {
+  margin-left: auto;
+}
+
+.user-list-links, a {
+  display: flex;
+}
+
+.user-list-links li a {
+  padding: 10px 16px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease ;
+}
+ 
+.user-links a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.myLogoutButton {
+  padding: 10px 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  border-style: none;
+  font-size: 25px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.myLogoutButton:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.active {
+  background-color: #fff;
+  color: #000;
+}
+
+.go-column {
+    display: flex;
+    flex-direction: column;
+}.go-row    {
+    display: flex;
+    flex-direction: row;
+}.align-right {
+    margin-left: auto;
+}.align-center {
+    align-self: center;
+    align-items: center;
+}
+
+hr {
+    margin: 0 0 10px;
+}
+
+.create-post-form {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 1px solid;
+    padding: 25px;
+    width: 500px;
+    height: fit-content;
+}
+
+.create-post {
+    width: 100%;
+    height: auto;
+    justify-content: center;
+}
+
+#create-post-text {
+    text-align: center;
+    font-family: monospace;
+}
+
+.create-post input {
+    padding: 5px;
+    margin: 10px;
+    background: transparent;
+    border-style: solid;
+    border-radius: 1px;
+    /* border-color: white; */
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+textarea[name=post-content] {
+    width: auto;
+    border-style: none;
+    outline: none;
+    color: #000;
+    padding: 10px;
+}
+
+input[type=text]:focus {
+    border-color: teal;
+    box-shadow: 0 0 15px 0 teal;
+}
+
+input[type=submit] {
+    outline: none;
+    border-style: none;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #fff;
+    color: #000;
+}

@@ -1,0 +1,278 @@
+@import url("style-only-footer.css");
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: white;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 25px;
+  padding:0;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1b1c25;
+  position: sticky;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+}
+
+#log-in-btn {
+  margin-left: auto;
+}
+
+.user-list-links, a {
+  display: flex;
+}
+
+.user-list-links li a {
+  padding: 10px 16px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease ;
+}
+ 
+.user-links a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.myLogoutButton {
+  padding: 10px 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  border-style: none;
+  font-size: 25px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.myLogoutButton:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.active {
+  background-color: #fff;
+  color: #000;
+}
+
+.go-column {
+    display: flex;
+    flex-direction: column;
+}.go-row    {
+    display: flex;
+    flex-direction: row;
+}.align-right {
+    margin-left: auto;
+}.align-center {
+    align-self: center;
+    align-items: center;
+}
+
+hr {
+    margin: 0 0 10px;
+}
+
+.container-forum-topic-posts {
+    padding: 25px;
+    margin: 10px;
+}
+
+.main-user-topic-post {
+  border: 1px solid;
+  border-radius: 25px;
+  padding: 10px;
+  margin: 0 0 10px 0;
+  height: auto;
+}
+
+.topic-user-profile-pic {
+  display: flex;
+  width: 75px;
+  height: 75px;
+  margin: 0 10px;
+  margin-bottom: auto;
+  margin-top: 15px;
+}
+
+.user-profile-pic {
+  display: flex;
+  width: 75px;
+  height: 75px;
+  margin: 0 10px;
+  margin-top: 5px;
+  margin-bottom: auto;
+}
+
+.user-post-profile-pic {
+  width: 75px;
+  height: 75px;
+  margin: 5px 20px 0 10px;
+}
+
+.additional-topic-info {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+.width {
+  width: 100%;
+}
+.main-user-post {
+  border: 1px solid;
+  padding: 10px;
+  margin: 10px;
+}
+
+.main-user-post-content {
+  font-size: 20px;
+}
+
+#user-topic-name {
+    /* margin-left: 0; */
+}
+
+.user-additional-info {
+  font-size: 15px;
+  display: flex;
+  margin-left: auto;
+}
+
+
+#main-forum-category-title {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 25px;
+  cursor: pointer;
+  font-family: Helvetica, sans-serif;
+}
+#main-forum-category-subtitle, #main-forum-topic-subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+
+#sum-of-replies {
+
+}
+
+.main-topic-posts {
+    margin: 10px 0;
+    border: 1px solid;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: rgba(93, 234, 253, 0.103);
+}
+
+.main-subforum-page-list {
+
+}
+
+
+.forum-topic-post {
+  padding: 10px;
+
+  width: 100%;
+}
+
+.main-topic-posts {
+  background-color: rgba(0, 128, 128, 0.1);
+}
+
+.forum-topic-main {
+    width: 100%;
+}
+
+.main-topic-content-container {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.main-topic-content {
+    border: 1px solid;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+
+.main-topic-content-menu {
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid;
+}
+
+.content-menu-button a i {
+    margin: 0 20px;
+    display: flex;
+    padding: 10px 16px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s ease ;
+}
+
+
+.content-menu-button a i:hover {
+    background-color: #fff;
+    color: #0a0a23;
+}
+
+
+#view-comment {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.user-comment-content {
+    background-color: #4c5154;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.comment-content-menu-button i{
+    margin: 0 20px;
+    display: flex;
+    padding: 5px 10px;
+    margin-top: 5px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease ;
+}
+
+.comment-content-menu-button i:hover {
+    background-color: #fff;
+    color: #0a0a23;
+}
+
+.date {
+
+    font-size: 15px;
+    align-self: center;
+}
