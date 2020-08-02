@@ -4,12 +4,29 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  text-decoration: none;
+  text-decoration: none;  
+  box-sizing: border-box;
+  outline: none;
 }
 
 html {
-  height: 100%;
+  height: auto;
 }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgb(86,200,130);
+  background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 25px;
+  padding:0;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
 .myLogoutButton {
   padding: 10px 16px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -27,15 +44,6 @@ html {
   color: #0a0a23;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: rgb(86,200,130);
-  background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
-  font-size: 25px;
-}
 
 main {
   min-height: calc(100vh - 50px - 50px);
@@ -55,6 +63,12 @@ nav ul {
 
 #log-in-btn {
   margin-left: auto;
+  transition: all 0.2s ease;
+}
+
+#log-in-btn > a:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 ul, a {
@@ -69,7 +83,7 @@ li a {
   transition: all 0.2s ease ;
 }
 
-.user-links li a:hover {
+nav li a:hover {
   background-color: #fff;
   color: #0a0a23;
 }
@@ -80,12 +94,13 @@ li a {
 }
 
 #main-contact-us {
+  margin: 10px 0;
+  padding: 10px;
   font-family: monospace;
-  font-weight: 400;
+  font-weight: 600;
+  font-size: 35px;
   border: 1px solid;
   display: inline-block;
-  scroll-padding: 10px;
-
 }
 
 input[type=text], input[type=email], textarea {
@@ -116,8 +131,11 @@ input[type=submit]:hover {
 .form-container  {
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
   padding: 20px;
+  margin: 0 auto;
+  width: fit-content;
+  border-radius: 5px;
+  border: 1px solid;
 }
 
 form {

@@ -6,10 +6,12 @@
   list-style: none;
   text-decoration: none;
   color: white;
+  box-sizing: border-box;
 }
 
 html {
-  height: 100%;
+  height: auto;
+
 }
 
 body {
@@ -20,8 +22,10 @@ body {
   background-size: cover;
   color: white;
   font-size: 25px;
+  padding:0;
   position: relative;
-  min-height: 100%;
+  min-height: 100vh;
+  padding-bottom: 100px;
 }
 
 
@@ -38,6 +42,12 @@ nav ul {
 
 #log-in-btn {
   margin-left: auto;
+  transition: all 0.2s ease;
+}
+
+#log-in-btn:hover {
+  background-color: #fff;
+  color: #0a0a23;
 }
 
 ul, a {
@@ -52,11 +62,33 @@ li a {
   transition: all 0.2s ease ;
 }
 
+.user-links li a:hover {
+  background-color: #fff;
+  color: #0a0a23;
+}
 
 nav li a:hover {
   background-color: #fff;
   color: #0a0a23;
 }
+
+[name=logoutButton] {
+  padding: 10px 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  border-style: none;
+  font-size: 25px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+[name=logoutButton]:hover {
+  background-color: #fff;
+  color: #0a0a23;
+}
+
 
 .active {
   background-color: #fff;
@@ -109,7 +141,8 @@ input {
 	border: none;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+  color:#ffffff;
+  margin: 10px 0 0;
 	font-family:Arial;
 	font-size:20px;
 	font-weight:bold;
@@ -117,6 +150,7 @@ input {
   width: 150px;
   align-self: center;
   transition: all 0.2s ease;
+  border: 1px solid;
 }
 
 .btn:hover {
@@ -125,6 +159,12 @@ input {
 }
 .checkbox-style {
   margin: 10px 0;
+  width: 100%;
+  align-content: center;
+}
+.check-box {
+  margin: auto 0;
+
 }
 
 .message span, .message span a {

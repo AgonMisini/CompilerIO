@@ -60,14 +60,14 @@
             }
          ?></h1>
         <span style="margin-top: 10px;">Sort by: </span>
-        <select name="" id="" onchange="if(this.value != '') document.location = '/compilerio/index-subforum.php?orderBy=' + this.value + '&category=' + category + '&page=' + page " style="color: black; width:15vw;">
-            <option value=""style="color: black;">Sort by</option>
-            <option value="Newest"<?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Newest') echo 'selected="selected"' ?> style="color: black;">Newest</option>
-            <option value="Oldest" <?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Oldest') echo 'selected="selected"' ?> style="color: black;">Oldest</option>
-            <option value="Most_popular"<?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Most_popular') echo 'selected="selected"' ?> style="color: black;">Most popular</option>
+        <select name="" class="posts-dropdown-order-list" id="" onchange="if(this.value != '') document.location = '/compilerio/index-subforum.php?orderBy=' + this.value + '&category=' + category + '&page=' + page ">
+            <option val="" value="" style="font-size: 17px;">Sort by</option>
+            <option val="1" value="Newest"<?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Newest') echo 'selected="selected"' ?> style="">Newest</option>
+            <option val="2" value="Oldest" <?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Oldest') echo 'selected="selected"' ?> style="">Oldest</option>
+            <option val="3" value="Most_popular"<?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Most_popular') echo 'selected="selected"' ?> style="">Most popular</option>
         </select>
 
-        <hr>
+        <hr style="margin: 10px 0;">
         <section class="main-subforum-topics">
             <div class="main-subforum-page-list ">
                 <ul class="subforum-page-list go-row">
@@ -85,7 +85,7 @@
                     <?php 
                         for($page=1;$page <= $numberOfPages; $page++){
                             if($_GET['page'] == $page){
-                                echo '<a style="background-color:white; color:black;" class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
+                                echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }else{
                                 echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }
@@ -104,11 +104,11 @@
                         if($_SESSION['logged_in'] == 1){
                             echo '<li style="margin-left: auto;" "><a class="list-link" href="create-post.php?category=' . $_GET['category'] . '&id=' . $_SESSION['userId'] . '&orderBy=' . $_GET['orderBy'] . '">Add Post</a></li>';
                             
-                            echo '<li class="list-link go-last-paget" id="selectable-page-list"><a href="#">' . 'Page ' . $_GET['page'] . ' of ' . $numberOfPages . '</a></li>';
+                            echo '<li class="list-link" id="selectable-page-list"><a href="#">' . 'Page ' . $_GET['page'] . ' of ' . $numberOfPages . '</a></li>';
                         }
                     }else{
                         echo '<p style="margin-left: 15px;"><a style="display: inline; color: #6495ED;;"href="index-l.php">Login/Create account </a>so you can comment.</p>';
-                        echo '<li class="list-link go-last-paget" id="selectable-page-list" style="margin-left: auto;"><a href="#">' . 'Page ' . $_GET['page'] . ' of ' . $numberOfPages . '</a></li>';
+                        echo '<li class="list-link" id="selectable-page-list-of" style="margin-left: auto;"><a id="page-list-of" href="#">' . 'Page ' . $_GET['page'] . ' of ' . $numberOfPages . '</a></li>';
                     } 
                      
                     ?>
@@ -129,7 +129,7 @@
                                     $stmt = $conn->query("SELECT * FROM forumcomment WHERE forumpostid = " . $forumPost['id']);
                                     echo count($stmt->fetchAll());
                                 ?></dt>
-                                <dd>comments</dd>
+                                <dd>Comments</dd>
                             </dl>
                             <p style="margin-right: 15px;">Likes: <?php echo $forumPost['likes'] ?></p>
                             <span>By: <a href="index-p.php?id=<?php 

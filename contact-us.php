@@ -45,16 +45,16 @@
   <div class="form-container">
     <form method="POST">
       <label for="fname">Name</label>
-      <input type="text" id="fname" name="name" placeholder="">
+      <input type="text" id="fname" name="name" placeholder="Input your Name">
 
       <label for="fname">Email</label>
-      <input type="email" id="fname" name="email" placeholder="">
+      <input type="email" id="fname" name="email" placeholder="Input your Email">
 
       <label for="fname">Subject</label>
-      <input type="text" id="fname" name="subject" placeholder="">
+      <input type="text" id="fname" name="subject" placeholder="Input the Subject">
 
       <label for="subject">Message</label>
-      <textarea id="subject" name="message" placeholder="Write something.." style="height:200px"></textarea>
+      <textarea id="subject" name="message" placeholder="Write something..." style="height:200px"></textarea>
       <div class="btn">
         <input type="submit" value="Submit" name="submitButton">
       </div>

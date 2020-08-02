@@ -25,7 +25,7 @@
                 <div class="title">
                     <h2>Our Project</h2>
                 </div>
-                <hr>
+                <hr style="margin: 10px 0;">
                 <div class="description">
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quisquam expedita, laudantium magnam sed animi iusto impedit repudiandae est. Dolores, nostrum nobis! Veniam facilis, suscipit fugiat odit ipsam aut culpa?<br>
@@ -36,7 +36,7 @@
                     </p>
                 </div>
             </div>
-            <hr>
+            <hr style="margin: 10px 0;">
 
             <div class="team">
                 <div class="title-1">

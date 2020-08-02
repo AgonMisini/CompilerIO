@@ -4,10 +4,12 @@
   padding: 0;
   list-style: none;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 html {
-  height: 100%;
+
+  height: auto;
 }
 
 body {
@@ -18,6 +20,10 @@ body {
   background-size: cover;
   color: white;
   font-size: 25px;
+  padding:0;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 100px;
 }
 
 .myLogoutButton {
@@ -34,7 +40,7 @@ body {
 
 .myLogoutButton:hover {
   background-color: #fff;
-  color: #0a0a23;
+  color: #000;
 }
 
 nav ul {
@@ -50,6 +56,12 @@ nav ul {
 
 #log-in-btn {
   margin-left: auto;
+  transition: all 0.2s ease;
+}
+
+#log-in-btn > a:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 ul, a {
@@ -66,12 +78,13 @@ li a {
 
 .user-links li a:hover {
   background-color: #fff;
-  color: #0a0a23;
+  color: #000;
 }
+
 
 .active {
   background-color: #fff;
-  color: #0a0a23;
+  color: #000;
 }
 
 
@@ -146,32 +159,3 @@ hr {
     width: 370px;
 }
 
-
-/** FOOTER */
-
-
-/* 
-footer {
-    display: flex;
-    flex-direction: row;
-    background: #303036;
-    color: #d3d3d3;
-    height: 100px;
-    position: relative;
-    clear: both;
-    padding: 20px;
-    align-items:center;
-    justify-content:center;
-}
-
-.footer{
-    background: #343a40;
-    color: #484848;
-    height: 50px;
-    width: 100%;
-    text-align: center;
-    bottom: 0px;
-    left: 0px;
-    padding-top: 20px;
-
-} */
