@@ -90,7 +90,7 @@
                                 echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }
                         }
-                    ?>       
+                    ?>  
                     <?php if($_GET['page'] == $numberOfPages){
 
                     }else{
@@ -102,13 +102,16 @@
 
                     <?php if(isset($_SESSION['logged_in'])){
                         if($_SESSION['logged_in'] == 1){
-                            echo '<li style="margin-left: auto;"><a class="list-link" href="create-post.php?category=' . $_GET['category'] . '&id=' . $_SESSION['userId'] . '&orderBy=' . $_GET['orderBy'] . '">Add Post</a></li>';
+                            echo '<li style="margin-left: auto;" "><a class="list-link" href="create-post.php?category=' . $_GET['category'] . '&id=' . $_SESSION['userId'] . '&orderBy=' . $_GET['orderBy'] . '">Add Post</a></li>';
                             
                             echo '<li class="list-link go-last-paget" id="selectable-page-list"><a href="#">' . 'Page ' . $_GET['page'] . ' of ' . $numberOfPages . '</a></li>';
-                        }else{
-                            echo '<li class="list-link go-last-paget" id="selectable-page-list" style="margin-left: auto;"><a href="#">' . 'Page ' . $_GET['page'] . ' of ' . $numberOfPages . '</a></li>';
                         }
-                    } ?>
+                    }else{
+                        echo '<p style="margin-left: 15px;"><a style="display: inline; color: #6495ED;;"href="index-l.php">Login/Create account </a>so you can comment.</p>';
+                        echo '<li class="list-link go-last-paget" id="selectable-page-list" style="margin-left: auto;"><a href="#">' . 'Page ' . $_GET['page'] . ' of ' . $numberOfPages . '</a></li>';
+                    } 
+                     
+                    ?>
                     
                 </ul>
             </div>

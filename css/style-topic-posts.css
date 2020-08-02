@@ -22,7 +22,7 @@ body {
   padding:0;
   position: relative;
   min-height: 100vh;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 
 nav ul {
@@ -98,7 +98,7 @@ hr {
 
 .container-forum-topic-posts {
     padding: 25px;
-    margin: 10px;
+    background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
 }
 
 .main-user-topic-post {

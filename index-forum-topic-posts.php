@@ -125,6 +125,8 @@
                 <?php 
                     if(isset($_SESSION['logged_in'])){
                         include "includes/comment.php";
+                    }else{
+                        echo '<p><a style="display: inline; color: #6495ED;;"href="index-l.php">Login/Create account </a>so you can comment.</p>';
                     }
                 ?>
             </div>

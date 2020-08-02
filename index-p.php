@@ -161,7 +161,7 @@
       <?php foreach($forumPosts as $forumPost): ?>
         <div class="user-post-left">
         <img src="<?php echo $profilePicture; ?>" alt="" width="100" height="100" style="display: block; margin-bottom: 10px; border-radius: 100px;">
-        <h4 style="align-self: center; padding: 0 10px;"><a href="<?= "forumpost.php?category=" . $forumPost['category'] . "&id=" . $forumPost['id']; ?>"><?= $forumPost['forumposttitle'] ?></a></h4>
+        <h4 style="align-self: center; padding: 0 10px;"><a style="color: #6495ED;" href="<?= "index-forum-topic-posts.php?category=" . $forumPost['category'] . "&id=" . $forumPost['id']; ?>"><?= $forumPost['forumposttitle'] ?></a></h4>
       </div>
       <div class="content-user-post" >
         <?php 
