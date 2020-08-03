@@ -12,7 +12,9 @@
         }
         //Selects everything from the table with a condition.
         public function selectAllWhere($table, $column, $equalTo){
-            $stmt = $this->pdo->query('SELECT * FROM ' . $table . ' WHERE ' .$column . ' = ' . $equalTo);
+            $stmt = $this->pdo->prepare('SELECT * FROM ' . $table . ' WHERE ' .$column . ' = :equalto');
+            $stmt->bindParam(":equalto", $equalTo);
+            $stmt->execute();
             return $stmt->fetchAll();
         }
         

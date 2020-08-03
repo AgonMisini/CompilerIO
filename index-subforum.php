@@ -85,7 +85,7 @@
                     <?php 
                         for($page=1;$page <= $numberOfPages; $page++){
                             if($_GET['page'] == $page){
-                                echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
+                                echo '<a class="list-link" style="background-color:white; color:black;"href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }else{
                                 echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }
@@ -140,7 +140,7 @@
                             
                             $stmt = $conn->query("SELECT username FROM users WHERE id = " . $forumPost['userid']);
                             echo $stmt->fetchColumn();
-                            ?></a><?php echo "  ". date('h:m:s A M/d', strtotime($forumPost['timeposted'])); ?></span>
+                            ?></a><?php echo "  ". date('h:i:s A M/d', strtotime($forumPost['timeposted'])); ?></span>
                         </div>
                     </li>
                 </ol>

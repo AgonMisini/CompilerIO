@@ -297,3 +297,13 @@ hr {
   border-radius: 15px;
   outline: none;
 }
+
+.like, .unlike, .likes_count {
+  color: #6495ED;
+}
+.hide {
+  display: none;
+}
+.fa-thumbs-up, .fa-thumbs-o-up {
+  font-size: 1.3em;
+}
