@@ -90,7 +90,8 @@
                                 echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }
                         }
-                    ?>  
+                    ?>
+ 
                     <?php if($_GET['page'] == $numberOfPages){
 
                     }else{

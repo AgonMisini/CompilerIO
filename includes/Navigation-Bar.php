@@ -21,6 +21,7 @@
 <nav>
     <ul class="user-list-links">
             <li class="user-links"><a href="index.php" class="<?= ($activePage == 'index') ? 'active':''; ?>">Home</a></li>
+            <li class="user-links"><a href="forums.php" class="<?= ($activePage == 'forums') ? 'active':''; ?>">Forums</a></li>
             <li class="user-links"><a href="tutorials.php" class="<?= ($activePage == 'tutorials') ? 'active':''; ?>">Tutorial</a></li>
             <li class="user-links"><a href="about-us.php" class="<?= ($activePage == 'about-us') ? 'active':''; ?>">About Us</a></li>
             <li class="user-links"><a href="contact-us.php" class="<?= ($activePage == 'contact-us') ? 'active':''; ?>">Contact Us</a></li>

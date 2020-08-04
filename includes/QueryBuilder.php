@@ -340,6 +340,22 @@
             return $stmt->fetchAll();
             
         }
+        public function getNumberOfPagesForSpecificCategory($category){
+            $stmt = $this->pdo->prepare('SELECT id FROM category WHERE name = :name ');
+            $stmt->bindParam(":name", $category);
+            $stmt->execute();
+            $categoryId = $stmt->fetchColumn();
+
+            $resultsPerPage = 5;
+
+            $stmt = $this->pdo->query("SELECT * FROM postcategories WHERE categoryid = " . $categoryId);
+            $posts = $stmt->fetchAll();
+            $numberOfPosts = count($posts);
+
+            $numberOfPages = ceil($numberOfPosts/$resultsPerPage);
+            return $numberOfPages;
+
+        }
 
         //Same as the getPage() method but for our forum posts.
         public function getForumPosts($page, $category, $orderBy){

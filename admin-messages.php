@@ -29,7 +29,7 @@
             <p style="margin-bottom: 10px;"><strong>Email:</strong> <?php echo $contactmessage['email']; ?></p>
             <p style="margin-bottom: 10px;"><strong>Title:</strong> <?php echo $contactmessage['subject']; ?></p>
             <p style="margin-bottom: 10px;"><strong>Message:</strong> <?php echo $contactmessage['message']; ?></p>
-            <p style="margin-bottom: 10px;"><strong>Date:</strong> <?php echo date('h:m:s A M/d', strtotime($contactmessage['timesent'])); ?></p>
+            <p style="margin-bottom: 10px;"><strong>Date:</strong> <?php echo date('h:i:s A M/d', strtotime($contactmessage['timesent'])); ?></p>
         </div>
         <?php endforeach; ?>
     </main>
