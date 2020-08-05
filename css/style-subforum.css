@@ -32,9 +32,31 @@ nav ul {
   padding: 0;
   overflow: hidden;
   background-color: #1b1c25;
-  position: sticky;
   border-bottom: 1px solid;
   margin-bottom: 10px;
+}
+
+
+.dropdown ul {
+  display: none;
+  position: absolute;
+  transition: all 0.2s ease ;
+  border: 1px solid;
+}
+
+
+.dropdown:hover > ul{
+  display: block;
+
+}
+.dropdown a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.dropdown a:hover > .fa-sort-down {
+  color: #000;
+  
 }
 
 #log-in-btn {
@@ -43,6 +65,7 @@ nav ul {
 
 .user-list-links, a {
   display: flex;
+
 }
 
 .user-list-links li a {
@@ -55,7 +78,46 @@ nav ul {
  
 .user-links a:hover {
   background-color: #fff;
-  color: #0a0a23;
+  color: #000;
+}
+
+
+.tutorials-dropdown-order-list {
+  background: transparent;
+  color: white; 
+  padding: 10px 16px;
+  width: fit-content;
+  height: auto;
+  cursor: pointer;
+  outline: none;
+  font-size: 20px;
+  transition: all 0.2s ease;
+  border: none;
+  overflow:hidden;
+
+  /** HIDES THE DROPDOWN ARROW */
+  text-indent: 1px;
+  text-overflow: " ";
+  -webkit-appearance: none;
+  /* ************************* */
+}
+
+.tutorials-dropdown-order-list:hover, .tutorials-dropdown-order-list:focus {
+  color: black; 
+  background-color: white;
+}
+
+.tutorials-dropdown-order {
+  color: black; 
+  background-color: white;
+}
+
+.tutorials-dropdown-order-list:focus > option:checked{
+  background-color: #008080;
+}
+.tutorials-dropdown-order-list option:hover {
+  background-color: #008080;
+
 }
 
 .myLogoutButton {
@@ -72,13 +134,13 @@ nav ul {
 
 .myLogoutButton:hover {
   background-color: #fff;
-  color: #0a0a23;
+  color: #000;
 }
 
 
 .user-list-links .user-links .active {
   background-color: #fff;
-  color: #0a0a23;
+  color: #000;
 }
 
 
@@ -113,33 +175,6 @@ hr {
   font-size: 20px;
   font-weight: 400;
   margin: 0 0 10px;
-}
-
-.posts-dropdown-order-list {
-  border: 1px solid;
-  background-color: black;
-  background: black;
-  color: white; 
-  padding: 10px; 
-  margin: 10px 0 0;
-  width:fit-content;
-  cursor: pointer;
-  outline: none;
-  font-size: 17px;
-  transition: all 0.2s ease;
-}
-
-.posts-dropdown-order-list:hover, .posts-dropdown-order-list:focus {
-  color: white; 
-  background-color: rgba(0, 128, 128, 0.5);
-}
-
-.posts-dropdown-order-list:focus > option:checked{
-  background-color: #008080;
-}
-.posts-dropdown-order-list option:hover {
-  background-color: #008080;
-
 }
 
 .forum-topic-main {
@@ -216,13 +251,8 @@ hr {
 }
 
 #main-forum-topic-title {
-  /* display: inline-block;
-  font-weight: 600;
-  font-size: 25px;
-  cursor: pointer; */
+
 }
-
-
 
 .forum-posts-sum {
     align-self: center;
@@ -235,5 +265,3 @@ hr {
     color: #8d9aa6;
 
 }
-
-
