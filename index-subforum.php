@@ -61,7 +61,6 @@
          ?></h1>
         <span style="margin-top: 10px;">Sort by: </span>
         <select name="" class="posts-dropdown-order-list" id="" onchange="if(this.value != '') document.location = '/compilerio/index-subforum.php?orderBy=' + this.value + '&category=' + category + '&page=' + page ">
-            <option val="" value="" style="font-size: 17px;">Sort by</option>
             <option val="1" value="Newest"<?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Newest') echo 'selected="selected"' ?> style="">Newest</option>
             <option val="2" value="Oldest" <?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Oldest') echo 'selected="selected"' ?> style="">Oldest</option>
             <option val="3" value="Most_popular"<?php if(isset($_GET['orderBy']) && $_GET['orderBy'] == 'Most_popular') echo 'selected="selected"' ?> style="">Most popular</option>
@@ -85,7 +84,7 @@
                     <?php 
                         for($page=1;$page <= $numberOfPages; $page++){
                             if($_GET['page'] == $page){
-                                echo '<a class="list-link" style="background-color:white; color:black;"href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
+                                echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }else{
                                 echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }
@@ -103,7 +102,7 @@
 
                     <?php if(isset($_SESSION['logged_in'])){
                         if($_SESSION['logged_in'] == 1){
-                            echo '<li style="margin-left: auto;" "><a class="list-link" href="create-post.php?category=' . $_GET['category'] . '&id=' . $_SESSION['userId'] . '&orderBy=' . $_GET['orderBy'] . '">Add Post</a></li>';
+                            echo '<li class="list-link" style="margin-left: auto;" "><a  href="create-post.php?category=' . $_GET['category'] . '&id=' . $_SESSION['userId'] . '&orderBy=' . $_GET['orderBy'] . '">Add Post</a></li>';
                             
                             echo '<li class="list-link" id="selectable-page-list"><a href="#">' . 'Page ' . $_GET['page'] . ' of ' . $numberOfPages . '</a></li>';
                         }

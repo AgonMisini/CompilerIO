@@ -58,7 +58,7 @@
                 echo '<button class="myLogoutButton" name="logoutButton">Logout</button>';
                 echo "</form>";
             }else{
-                echo '<li id="log-in-btn"><a href="index-l.php" class="<?= ($activePage == "index-r.php" || $activePage == "index-l.php") ? "active":""; ?>Login - Register</a></li>';
+                echo '<li id="log-in-btn"><a href="index-l.php" class="<?= ($activePage == "index-r.php" || $activePage == "index-l.php") ? "active":""; ?>Login | Sign Up</a></li>';
             }
         ?>
     </ul>

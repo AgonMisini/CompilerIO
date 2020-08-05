@@ -8,8 +8,18 @@ border-bottom: 1px solid;
 margin-bottom: 10px;
 }
 
-#log-in-btn {
-margin-left: auto;
+#log-in-btn, #log-in-btn a {
+    margin-left: auto;
+    transition: all 0.2s ease;
+}
+
+#log-in-btn:hover {
+    background-color: #fff;
+}
+
+#log-in-btn:hover > a {
+    color: #000;
+
 }
 
 .user-list-links, a {

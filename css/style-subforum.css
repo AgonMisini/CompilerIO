@@ -62,6 +62,21 @@ hr {
   margin: 0 0 10px;
 }
 
+.posts-dropdown-order-list {
+  width: fit-content;
+  background: transparent;
+  border: 1px solid;
+  border-color: white;
+  outline: none;
+}
+
+.posts-dropdown-order-list option {
+  background-color: black;
+  border: 5px solid;
+  border-color: white;
+}
+
+
 .forum-topic-main {
 
 }
@@ -94,7 +109,7 @@ hr {
 }
 
 
-.list-link {
+.list-link  {
   padding: 3px 10px;
   color: white;
   text-decoration: none;
@@ -105,16 +120,18 @@ hr {
   width: fit-content;
 }
 
-
 .list-link:hover {
   background-color: #fff;
   color: #000;
 }
 
-#selectable-page-list-of:hover > #page-list-of {
+.list-link:hover > a {
   color: #000;
 }
 
+a {
+  transition: all 0.2s ease;
+}
 .go-next-page {
 
 }

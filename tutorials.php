@@ -40,18 +40,21 @@
 </head>
 <body>
     <?php include "includes/Navigation-bar.php"; ?>
-    <h1><?php echo $title;?></h1>
-    <?php  echo $content; ?>
+    <div class="go-row align-center">
+        <h1 id="title1"><?php echo $title;?></h1>
+    </div>
+    <div class="main-content-wrapper go-column"><?php  echo $content; ?> </div>
+    
+    <div class="go-row justify-center">
+        <?php if($previousTutorialPossible == 1): ?>
+            <li class="tutorial-jump-page align-center"><a  href="tutorials.php?numberOfTutorial=<?php echo $numberOfTutorial-1 . "&language=" . $_GET['language']; ?>">Previous tutorial</a></li>
+        <?php endif ?>
 
 
-    <?php if($previousTutorialPossible == 1): ?>
-        <li><a href="tutorials.php?numberOfTutorial=<?php echo $numberOfTutorial-1 . "&language=" . $_GET['language']; ?>">Previous tutorial</a></li>
-    <?php endif ?>
-
-
-    <?php if($nextTutorialPossible == 1): ?>
-        <li><a href="tutorials.php?numberOfTutorial=<?php echo $numberOfTutorial+1 . "&language=" . $_GET['language']; ?>">Next tutorial</a></li>
-    <?php endif ?>
+        <?php if($nextTutorialPossible == 1): ?>
+            <li class="tutorial-jump-page align-center"><a  href="tutorials.php?numberOfTutorial=<?php echo $numberOfTutorial+1 . "&language=" . $_GET['language']; ?>">Next tutorial</a></li>
+        <?php endif ?>
+    </div>
     <?php include "includes/footer.php"; ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>

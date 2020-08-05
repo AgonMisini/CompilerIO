@@ -1,0 +1,127 @@
+.hero {
+    height: auto;
+    width: 100%;
+    position: absolute;
+}
+
+.form-box1 {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    margin: 6% auto;
+    background: transparent;
+    padding: 5px;
+    border: 3px solid;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.button-box {
+    width: 220px;
+    margin: 0 auto;
+    margin-top: 35px;
+    position: relative;
+    /* box-shadow: 0 0 20px 9px rgba(84, 235, 255, 0.698); */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid;
+}
+
+.toggle-btn {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    color: black;
+    font-weight: 600;
+    transition: all 0.5s ease;
+}
+
+#btn1 {
+    top: 2px;
+    left: 2px;
+    position: absolute;
+    width: 110px;
+    height: 88%;
+    margin: auto 0;
+    /* background: linear-gradient(to right,#ff105f,#ffad06); */
+    background: linear-gradient(to right,#10c7ff ,#23ff06 );
+
+
+    background-size: 200% 100%;
+    transition: all 0.2s ease;
+} 
+
+#sighnup-btn {
+    color: white;
+}
+
+.input-group1 {
+    top: 150px;
+    position: absolute;
+    width: 300px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.input-field1 {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid;
+    outline: none;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+.submit-btn {
+    width: 85%;
+    padding: 10px 30px;
+    margin: auto;	
+    border: 0;
+    outline: none;
+    color:#ffffff;
+    background-color:#1b1c25;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 1px solid;
+
+
+    margin: 10px 0 0;
+      font-family:Arial;
+      font-size:20px;
+      font-weight:bold;
+    align-self: center;
+} .submit-btn:hover {
+    background-color: #fff;
+    color: #0a0a23;
+}
+
+.checkbox {
+    margin: 30px 10px 30px 0;
+} 
+
+#log-in-form {
+    left: 50px;
+}
+
+#sign-up-form {
+    left: 450px;
+}
+
+.remember-me {
+    margin: 0 0 25px;
+}
+
+#agree-terms {
+    font-size: 20px;
+}
+
+#agree-terms a {
+    display: inline;
+}

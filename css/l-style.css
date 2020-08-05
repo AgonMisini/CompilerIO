@@ -95,27 +95,6 @@ input {
   margin: 10px 0;
 }
 
-.btn{
-	background-color:#1b1c25;
-	border: none;
-	display:inline-block;
-	cursor:pointer;
-  color:#ffffff;
-  margin: 10px 0 0;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-  padding:6px 24px;
-  width: 150px;
-  align-self: center;
-  transition: all 0.2s ease;
-  border: 1px solid;
-}
-
-.btn:hover {
-  background-color: #fff;
-  color: #0a0a23;
-}
 .checkbox-style {
   margin: 10px 0;
   width: 100%;
@@ -126,27 +105,14 @@ input {
 
 }
 
-.message span, .message span a {
+.message span, #click-here {
   display: inline-block;
- font-size: 16px;
+  font-size: 16px;
 }
 
-.message span a {
-  background-color:#000;
-	border: none;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-  padding: 5px;
-  transition: all 0.2s ease;
-}
 
-.message span a:hover {
-    background-color: #fff;
-  color: #0a0a23;
-}
+
+
+
 
 
