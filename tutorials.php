@@ -1,6 +1,7 @@
 <?php 
     require "includes/Connection.php";
     require "includes/QueryBuilder.php";
+    session_start();
     $conn = Connection::conn();
     $query = new QueryBuilder($conn);
 
@@ -43,7 +44,7 @@
     <div class="go-row align-center">
         <h1 id="title1"><?php echo $title;?></h1>
     </div>
-    <div class="main-content-wrapper go-column"><?php  echo $content; ?> </div>
+    <div class="main-content-wrapper go-column" style="width: 80vw; margin: 0 auto;"><?php  echo $content; ?> </div>
     
     <div class="go-row justify-center">
         <?php if($previousTutorialPossible == 1): ?>

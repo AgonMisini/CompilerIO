@@ -61,7 +61,7 @@ color: #000;
 
 .active {
     background-color: #fff;
-    color: #0a0a23;
+    color: #0a0a23 !important;
 }
   
 

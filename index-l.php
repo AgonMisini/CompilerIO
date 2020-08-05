@@ -14,6 +14,14 @@
         $userInformation = array($username, $password);
         $query->login($userInformation);
     }
+    if(isset($_POST['registerButton'])){
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirmPassword = $_POST['confirmPassword'];
+        $userInformation = array($username, $email, $password, $confirmPassword);
+        $query->insertUser($userInformation);
+    }
     
 ?>
 
@@ -30,7 +38,6 @@
 <body>
     <!-- NAVBAR -->
     <?php include "includes/Navigation-bar.php";?>
-
     <!-- <div class="container">
         <div class="form-box">
             <h1>Login</h1>
@@ -65,6 +72,7 @@
     </form> -->
 
 <!-- EXPERIMENT -->
+<h1>Login | Sign up</h1>
 <div class="hero">
     <div id="form-box1" class="form-box1">
         <div class="button-box">
@@ -72,15 +80,15 @@
             <button type="button" id="login-btn" class="toggle-btn" onclick="login()">Log In</button>
             <button type="button" id="sighnup-btn" class="toggle-btn" onclick="sighnup()">Sign Up</button>
         </div>
-        <form action="" id="log-in-form" class="input-group1">
-            <input type="text" class="input-field1" placeholder="Username">
-            <input type="text" class="input-field1" placeholder="Password">
+        <form method="POST" id="log-in-form" class="input-group1">
+            <input type="text" class="input-field1" placeholder="Username" name="username">
+            <input type="password" class="input-field1" placeholder="Password" name="password">
             <span class="go-row remember-me">
                 <input type="checkbox" class="check-box1"> <span style="font-size:20px;">Keep me signed in</span>
             </span>
-            <button type="submit" class=" btn submit-btn">Log In</button>
+            <button type="submit" class=" btn submit-btn" name="loginButton">Log In</button>
         </form>
-        <form action="" id="sign-up-form" class="input-group1">
+        <form method="POST" id="sign-up-form" class="input-group1">
             <input type="text"  id="fname" name="username" class="fname-field input-field1" placeholder="Enter your username...">
             <input type="email" id="email" name="email" class="email-field input-field1" placeholder="Enter your email..." required>
             <input type="password" id="password" name="password" class="password-field input-field1" placeholder="Enter your password..." required>

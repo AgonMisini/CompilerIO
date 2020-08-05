@@ -28,7 +28,7 @@
 
             //Check if the fields are empty, if so, send the user back and exit script.
             if(empty($username) || empty($email) || empty($password) || empty($confirmPassword)){
-                header("Location index.php?error=emptyField");
+                header("Location index-l.php?error=emptyField");
                 exit();
             }else{
                 //MySQL for checking if the username that already exists in the DB
@@ -45,22 +45,22 @@
 
                 //If there already exists such username, exit.
                 if($userCheck == 1){
-                    header("Location: index.php?error=nameAlreadyTaken");
+                    header("Location: index-l.php?error=nameAlreadyTaken");
                     exit();
                 }
                 //If there already exists such email, exit.
                 else if($emailCheck == 1){
-                    header("Location: index.php?error=EmailAlreadyTaken");
+                    header("Location: index-l.php?error=EmailAlreadyTaken");
                     exit();
                 }
                 //Check if the passwords match.
                 else if($password !== $confirmPassword){
-                    header("Location: index.php?error=MismatchingPasswords");
+                    header("Location: index-l.php?error=MismatchingPasswords");
                     exit();
                 }
                 //Check the passwords length.
                 else if(strlen($password) < 8 || strlen($password) > 26){
-                    header("Location: index.php?error=passwordShorterThan8CharactersOrLongerThan26Characters");
+                    header("Location: index-l.php?error=passwordShorterThan8CharactersOrLongerThan26Characters");
                     exit();
                 }else{
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

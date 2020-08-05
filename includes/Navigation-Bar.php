@@ -23,14 +23,12 @@
             <li class="user-links"><a href="index.php" class="<?= ($activePage == 'index') ? 'active':''; ?>">Home</a></li>
             <li class="user-links"><a href="forums.php" class="<?= ($activePage == 'forums') ? 'active':''; ?>">Forums</a></li>   
 
-            <li  class="dropdown"><a href="#">Tutorials &nbsp; <i class="fa fa-sort-down"></i></a>
+            <li  class="dropdown"><a href="#"class="<?= ($activePage == 'tutorials') ? 'active':''; ?>">Tutorials &nbsp; <i class="fa fa-sort-down"></i></a>
                 <ul >
                     <li><a href="tutorials.php?numberOfTutorial=1&language=HTML">HTML</a></li>
                     <li><a href="tutorials.php?numberOfTutorial=1&language=CSS">CSS</a></li>
                 </ul>
             </li>
-
-            <!-- <li class="user-links"><a href="tutorials.php" class="<?= ($activePage == 'tutorials') ? 'active':''; ?>">Tutorial</a></li> -->
             <li class="user-links"><a href="about-us.php" class="<?= ($activePage == 'about-us') ? 'active':''; ?>">About Us</a></li>
             <li class="user-links"><a href="contact-us.php" class="<?= ($activePage == 'contact-us') ? 'active':''; ?>">Contact Us</a></li>
 
@@ -50,7 +48,7 @@
         <?php 
             if(isset($_SESSION['logged_in'])){
                 if($activePage == "index-p"){
-                    echo '<li id="log-in-btn"><a href="index-p.php?id=' . $userId . '" class="active">'  . 'Welcome ' . $username . '</a></li>';
+                    echo '<li id="log-in-btn"><a href="index-p.php?id=' . $userId . '" style="background-color:white; color:black;">'  . 'Welcome ' . $username . '</a></li>';
                 }else{
                     echo '<li id="log-in-btn"><a href="index-p.php?id=' . $userId . '">'  . 'Welcome ' . $username . '</a></li>';
                 }
