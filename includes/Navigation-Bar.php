@@ -25,8 +25,8 @@
 
             <li  class="dropdown"><a href="#">Tutorials &nbsp; <i class="fa fa-sort-down"></i></a>
                 <ul >
-                    <li><a href="#">HTML</a></li>
-                    <li><a href="#">CSS</a></li>
+                    <li><a href="tutorials.php?numberOfTutorial=1&language=HTML">HTML</a></li>
+                    <li><a href="tutorials.php?numberOfTutorial=1&language=CSS">CSS</a></li>
                 </ul>
             </li>
 
@@ -63,4 +63,3 @@
         ?>
     </ul>
 </nav>
-

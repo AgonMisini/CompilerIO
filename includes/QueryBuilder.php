@@ -181,7 +181,7 @@
                     $stmt = $this->pdo->query('INSERT INTO postcategories (postid, categoryid) VALUES (' . $postId . ', ' . $category . ')');
                 }
 
-                header("Location: index.php?success");
+                header("Location: index.php?success=postSubmittedSuccessfully");
             }
         }
         //Query for inserting a comment on a news post
