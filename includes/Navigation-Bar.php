@@ -23,7 +23,7 @@
             <li class="user-links"><a href="index.php" class="<?= ($activePage == 'index') ? 'active':''; ?>">Home</a></li>
             <li class="user-links"><a href="forums.php" class="<?= ($activePage == 'forums') ? 'active':''; ?>">Forums</a></li>   
 
-            <li  class="dropdown"><a href="#">Tutorials &nbsp; <i class="fas fa-sort-down"></i></a>
+            <li  class="dropdown"><a href="#">Tutorials &nbsp; <i class="fa fa-sort-down"></i></a>
                 <ul >
                     <li><a href="#">HTML</a></li>
                     <li><a href="#">CSS</a></li>

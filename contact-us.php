@@ -15,15 +15,14 @@
     $query->insertContactUsMessage($messageInformation);
   }
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
   <link rel="stylesheet" href="css/contact-us.css">
   <title>Contact Us</title>
 </head>
@@ -33,7 +32,9 @@
   <?php include 'includes/Navigation-Bar.php'; ?>
 
 <main>
-  <h3 id="main-contact-us">Contact Us</h3>
+  <div class="go-middle">
+    <h3 id="">Contact Us</h3>
+  </div>
   <?php 
      if(isset($_GET['error'])){
       echo "<p class='error' style='margin-left: 20px; color:white;'>You cant send a message with an empty field</p>";
