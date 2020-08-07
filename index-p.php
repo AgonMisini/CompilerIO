@@ -49,6 +49,12 @@
     $query->changeProfilePicture($_GET['id']);
   }
 
+  //Change bio
+  if(isset($_POST['editBio'])){
+    $bio = $_POST['bio'];
+    $query->changeBio($bio);
+  }
+
 
 ?>
 
@@ -107,8 +113,9 @@
               if($_SESSION['userId'] == $_GET['id']){
                 if(empty($bio)){
                   echo '<form method="POST">';
-                  echo '<textarea name="bio" id="" cols="30" rows="10"></textarea>';
-                  echo ' <input type="submit" name="submitBio" style="display:block; margin: 0 auto; padding: 5px;">';
+                  echo '<textarea name="bio" id="" cols="30" rows="10" onkeyup="charcountupdate(this.value)"></textarea>';
+                  echo '<p id="charcount">0 out of 160 characters</p>';
+                  echo ' <input class="user-submit-btn" type="submit" name="submitBio" style="display:block; margin: 0 auto; padding: 5px;">';
                   echo '</form>';
                 }else{
                   echo $bio;
@@ -212,6 +219,18 @@
             <input type="submit" class="user-submit-btn" name="changePicture">
           </form>
       </div>
+      <div class="username-ch user-form-input" style="margin-top: 10px;">
+          <form method="POST">
+            <h3 class="username">Change bio</h3>
+              <?php if(empty($bio)): ?>
+                <h4>User has no bio to edit</h4>
+              <?php else: ?>
+                <textarea id="" cols="30" rows="10" name="bio" onkeyup="charcountupdate(this.value)"><?php echo $bio; ?></textarea>
+                <p id="charcount"></p>
+                <input type="submit" class="user-submit-btn" name="editBio">
+              <?php endif; ?>
+          </form>
+      </div>
     </div>
 
   </div>
@@ -251,6 +270,10 @@
         v.setAttribute("class","");
 
 
+    }
+    function charcountupdate(str) {
+	    var lng = str.length;
+	    document.getElementById("charcount").innerHTML = lng + ' out of 160 characters';
     }
 </script>
     <!-- FOOTER -->

@@ -84,15 +84,15 @@
                     <?php 
                         for($page=1;$page <= $numberOfPages; $page++){
                             if($_GET['page'] == $page){
-                                echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
+                                echo '<a style="background-color: white; color: black;" class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }else{
                                 echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }
                         }
                     ?>
  
-                    <?php if($_GET['page'] == $numberOfPages){
-
+                    <?php if($_GET['page'] == $numberOfPages || $numberOfPages == 0){
+                       
                     }else{
                         $pagenum = $_GET['page'] + 1;
                         echo '<li class="list-link go-next-page"><a href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $pagenum .'">NEXT</a></li>';
@@ -100,18 +100,27 @@
                     } ?>
                      <!-- last page Jump link (If this category has n topics me shku te faqja e fundit) -->
 
-                    <?php if(isset($_SESSION['logged_in'])){
+                    <?php 
+                    if($numberOfPages == 0){
+                        $currentPage = 0;
+                    }else{
+                        $currentPage = $_GET['page'];
+                    }
+                    if(isset($_SESSION['logged_in'])){
                         if($_SESSION['logged_in'] == 1){
                             echo '<li class="list-link" style="margin-left: auto;" "><a  href="create-post.php?category=' . $_GET['category'] . '&id=' . $_SESSION['userId'] . '&orderBy=' . $_GET['orderBy'] . '">Add Post</a></li>';
-                            
-                            echo '<li class="list-link" id="selectable-page-list"><a href="#">' . 'Page ' . $_GET['page'] . ' of ' . $numberOfPages . '</a></li>';
+                            echo '<li class="list-link" id="selectable-page-list-of"><a id="page-list-of" href="#">' . 'Page ' . $currentPage . ' of ' . $numberOfPages . '</a></li>';
                         }
                     }else{
-                        echo '<p style="margin-left: 15px;"><a style="display: inline; color: #6495ED;;"href="index-l.php">Login/Create account </a>so you can comment.</p>';
-                        echo '<li class="list-link" id="selectable-page-list-of" style="margin-left: auto;"><a id="page-list-of" href="#">' . 'Page ' . $_GET['page'] . ' of ' . $numberOfPages . '</a></li>';
-                    } 
-                     
+                        echo '<p style="margin-left: 15px;"><a style="display: inline; color: #6495ED;;"href="index-l.php">Login/Create account </a>so you can add a post.</p>';
+                        echo '<li class="list-link" id="selectable-page-list-of" style="margin-left: auto;"><a id="page-list-of" href="#">' . 'Page ' . $currentPage . ' of ' . $numberOfPages . '</a></li>';
+                    }  
                     ?>
+             
+                   
+                        
+                
+
                     
                 </ul>
             </div>

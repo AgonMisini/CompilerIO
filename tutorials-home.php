@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +18,7 @@
 <div class="tutorials-home-main-container go-column">
     <div class="main-tutorial-list-wrapper align-center go-column">
         <div class="tutorial-list-wrapper go-row">
-            <a class="tutorial-card-link1" href="">
+            <a class="tutorial-card-link1" href="tutorials.php?numberOfTutorial=1&language=HTML">
                 <div class="tutorial-card1 go-column ">
                     <h2  class="tutorial-subtitle subtitle1">HTML</h2>
                     <p class="hello-world">Hello World</p>
@@ -23,7 +26,7 @@
                     <img class="html-ico" src="pic\html-code.png" alt="html-logo">
                 </div>
             </a>
-            <a class="tutorial-card-link2" href="#">
+            <a class="tutorial-card-link2" href="tutorials.php?numberOfTutorial=1&language=CSS">
                 <div class="tutorial-card2 go-column justify-center align-center">
                     <h2 class="tutorial-subtitle subtitle2">CSS</h2>
                 </div>

@@ -38,40 +38,6 @@
 <body>
     <!-- NAVBAR -->
     <?php include "includes/Navigation-bar.php";?>
-    <!-- <div class="container">
-        <div class="form-box">
-            <h1>Login</h1>
-            <div class="input-group">
-                <form method="POST">
-                    <input type="text" id="email" name="username" class="email-field" placeholder="Enter your username..." required style="color: black;">
-                    <input type="password" id="password" name="password" class="password-field" placeholder="Enter your password..." required style="color: black;">
-                    <div class="checkbox-style">
-                        <input type="checkbox" id="checkbox" class="check-box">
-                        <label for="checkbox">Remember my password</label>
-                    </div>
-                    <button class="btn" type="submit" name="loginButton">Login</button>
-                </form>
-                
-            </div>
-            <div class="message">
-                <span>If you don't have an account click <a id="click-here" href="index-r.php">here</a> to register</span>
-            </div>
-        </div>
-    </div> -->
-<!-- 
-    <form method="POST">
-        <input type="text"  id="fname" name="username" class="fname-field" placeholder="Enter your username...">
-        <input type="email" id="email" name="email" class="email-field" placeholder="Enter your email..." required>
-        <input type="password" id="password" name="password" class="password-field" placeholder="Enter your password..." required>
-        <input type="password" id="password" name="confirmPassword" class="password-field" placeholder="Confirm password..." required>
-        <div>
-            <input type="checkbox" id="checkbox" class="check-box">
-            <label for="checkbox">I agree to <a href="#">Terms & Conditions</a>.</label>
-        </div>
-        <button class="btn" type="submit" name="registerButton">Register</button>
-    </form> -->
-
-<!-- EXPERIMENT -->
 <h1>Login | Sign up</h1>
 <div class="hero">
     <div id="form-box1" class="form-box1">
@@ -91,7 +57,7 @@
         <form method="POST" id="sign-up-form" class="input-group1">
             <input type="text"  id="fname" name="username" class="fname-field input-field1" placeholder="Enter your username...">
             <input type="email" id="email" name="email" class="email-field input-field1" placeholder="Enter your email..." required>
-            <input type="password" id="password" name="password" class="password-field input-field1" placeholder="Enter your password..." required>
+            <input type="password" id="password" name="password" class="password-field input-field1" placeholder="Enter your password...(8 to 26 chars)" required>
             <input type="password" id="password" name="confirmPassword" class="password-field input-field1" placeholder="Confirm password..." required>
             <div class="go-row">
                 <input type="checkbox" id="checkbox" class="check-box">

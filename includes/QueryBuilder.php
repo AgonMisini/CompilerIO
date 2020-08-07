@@ -561,6 +561,13 @@
                 header ('Location: index-p.php?error=failedToUploadImage&id=' . $userId);
             }
         }
+        public function changeBio($bio){
+            $stmt = $this->pdo->prepare("UPDATE users SET bio = :bio WHERE id = :id");
+            $stmt->bindParam(":bio", $bio);
+            $stmt->bindParam(":id", $_SESSION['userId']);
+            $stmt->execute();
+            header("Location: index-p.php?success=bioChanged&id=" . $_SESSION['userId']);
+        }
         //Function about deleting an entire user along with his posts, comments. -TODO- Figure out how to delete the profile picture too.
         public function deleteUser($userId){
             //Checks if the user is an admin or not.

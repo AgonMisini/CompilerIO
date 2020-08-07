@@ -107,9 +107,6 @@
                                 echo $commentCount . " replies";
                             ?> 
                             </span>
-                            <span>
-                                <?php echo "|  Likes: " . $likes;  ?>
-                            </span>
                         </span>
                     </span>
                 </div>
@@ -135,7 +132,7 @@
                     </ul>
                 </div>
                 <div class="go-row">
-                    <a id="view-comment" class="go-row" href="">View Comments</a>
+                    <a id="view-comment" class="go-row" href="">View Comments <?php echo "(" . $commentCount . ")"; ?></a>
                 </div>
 
                 <div class="main-comments">
