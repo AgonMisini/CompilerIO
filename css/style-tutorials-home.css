@@ -1,0 +1,225 @@
+@import url("style-only-footer.css");
+@import url("style-only-navigation-bar.css");
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+html {
+  height: max-content;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgb(86,200,130);
+  background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 25px;
+  padding:0;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+.go-column {
+  display: flex;
+  flex-direction: column;
+}.go-row    {
+  display: flex;
+  flex-direction: row;
+}.align-right {
+  margin-left: auto;
+}.align-center {
+  align-self: center;
+  align-items: center;
+} .justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+hr {
+  margin: 0 0 10px;
+}
+
+#content-css-color, #content-css-color-blue, #content-css-color-gray, #content-css-color-red, #content-css-color-f1f1f1 {
+  color: #cb7832;
+  background: #2b2b2b;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.title1 {
+  text-align: center;
+}
+
+.main-tutorial-list-wrapper {
+  width: 80vw;
+}
+
+.tutorial-list-wrapper {
+  justify-content: space-around;
+}
+
+.tutorial-card-link1, .tutorial-card-link2, .tutorial-card-link3, .tutorial-card-link4 {
+  margin: 25px;
+}
+
+.tutorial-card1, .tutorial-card2, .tutorial-card3, .tutorial-card4 {
+  align-self: center;
+  width: 300px;
+  height: 330px;
+  color: white;
+  border: 1px solid white;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.html-ico {
+  width: 100px;
+}
+
+.subtitle1, .hello-world, .html5, .html-ico, .subtitle3, .type_box, .subtitle4, .sql-ico{
+  position: absolute;
+  align-self: center;
+  margin-top: 135px;
+  transition: 0.5s ease;
+} 
+
+.hello-world, .html5, .html-ico {
+  opacity: 0;
+} .tutorial-card1:hover > .hello-world {
+  opacity: 1.0;
+  margin-top: 95px;
+} .tutorial-card1:hover > .html5 {
+  opacity: 1.0;
+}  .tutorial-card1:hover > .html-ico {
+  opacity: 1.0;
+  margin-top: 185px;
+}
+
+.subtitle1 {
+  align-self: center;
+} .tutorial-card1:hover > .subtitle1 {
+  margin-top: 50px;
+}
+
+.subtitle1, .subtitle2, .subtitle3, .subtitle4 {
+  transition: all 0.5s ease;
+}
+
+.subtitle2, .subtitle2 {
+  transition: all 0.5s ease;
+  color: rgb(77, 77, 77);
+}
+
+.tutorial-card2:hover > .subtitle2 {
+  color: #fff;
+  text-shadow: 0 0 10px #3bd8d8, 0 0 20px #9e3bd8, 0 0 30px #3cff2a91;
+}
+
+
+.tutorial-card-link2 {
+  position: relative;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.tutorial-card-link2:hover{
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+}
+
+.tutorial-card-link2:first-child:before,
+.tutorial-card-link2:last-child:before{
+  content: '';
+  position: absolute;
+  background: inherit;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  border-radius: 50px;
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.tutorial-card-link2:hover:before{
+  opacity: 1;
+  z-index: -1;
+}
+.tutorial-card-link2:hover{
+  z-index: 1;
+  animation: glow 8s linear infinite;
+}
+@keyframes glow {
+  0%{
+    background-position: 0%;
+  }
+  100%{
+    background-position: 400%;
+  }
+}
+
+.subtitle3 {
+  margin-top: 135px;
+  align-self: unset;
+}
+.type_box {
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin-top: 130px;
+  align-self: unset;
+}
+.tutorial-card3:hover > .subtitle3 {
+  margin-top: 70px;
+}
+
+.tutorial-card3:hover > .type_box {
+  opacity: 1;
+
+}
+
+#typing-text {
+  color: #FFFFFF;
+  border: solid 1px #A8A8A8;
+  text-align: left;
+  font-family: 'Courier New', Courier, monospace;
+  overflow: hidden;
+  background-color: #000000;
+  color: rgb(16, 223, 78);
+  font-size: 15px;
+  padding: 5px;
+  height: 25px;
+  width: 500px;
+  outline: none;
+  resize: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.tutorial-card4:hover > .subtitle4 {
+  margin-top: 70px;
+}
+
+.sql-ico {
+  width: 100px;
+  height: auto;
+  opacity: 0;
+}.tutorial-card4:hover > .sql-ico {
+  opacity: 1;
+}

@@ -39,7 +39,7 @@ body {
 
 .profile-info {
   padding: 10px;
-  width: auto;
+  width: 550px;
   height: auto;
   border: 1px solid white;
   border-width: 1px;
@@ -109,12 +109,27 @@ body {
 .tabs ul {
   list-style-type: none;
   font-family: monospace;
-  overflow: hidden;
-  background-color: #1b1c25;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .tabs li {
   margin: 0 auto;
+}
+
+.tabs .user-links {
+  height: 50px;
+  width: 555px;
+} .tabs .user-links li a{
+  padding: 11px ;
+  transition: all 0.2s ease;
+  color: white;
+}.tabs .user-links li {
+  text-align: center;
+}.tabs .user-links li a:hover {
+  color: black;
 }
 
 .user-posts {

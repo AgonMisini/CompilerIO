@@ -208,7 +208,7 @@
       <div class="username-ch user-form-input" style="margin-top: 10px;">
           <form method="POST" enctype="multipart/form-data">
             <h3 class="username">Change profile picture</h3>
-            <input type="file" style="margin: 10px; auto; margin-left: 100px;" name="photo">
+            <input type="file" style="margin: 10px auto; margin-left: 100px;" name="photo">
             <input type="submit" class="user-submit-btn" name="changePicture">
           </form>
       </div>
