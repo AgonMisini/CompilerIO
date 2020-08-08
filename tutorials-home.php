@@ -61,7 +61,7 @@
         var NxtMsgDelay = 1000;
         var MsgIndex = 0;
         var delay;
-        var MsgArray = ['echo "Hello World!</h1>"'];
+        var MsgArray = ['echo "Hello World!"'];
 
         function StartTyping() {
             var id = document.getElementById("typing-text");

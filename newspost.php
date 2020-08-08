@@ -62,7 +62,21 @@
                 $categoryLink = $stmt->fetchColumn();
                 echo '<a style="display: inline; color: #6495ED;" href="index.php?category=' . $categoryLink . '">' . $categoryLink .'</a>/';
             }
-            ?></p>    
+            ?></p>  
+
+            <div class="go-row">
+            
+            <?php if(isset($_SESSION['logged_in'])): ?>
+                <span style="margin: 0 5px; font-size: 15px; "><?php echo "Posted on: " . $date; ?></span>
+
+                <?php else: ?>
+                <a  style="color: #6495ED; margin: 0 5px; font-size: 10px;" href="index-l.php">Login/Create Account to comment</a>
+
+            <?php endif; ?>
+            </div>  
+
+            <span style="margin: 0 5px; font-size: 15px; "><?php echo "replies (" . $commentsMade . ")"; ?></span>
+
             <div class="admin-dropdown-post-menu-container">
 
                 <?php if(isset($_SESSION['logged_in'])): ?>
@@ -71,14 +85,16 @@
                             <ul>
                                 <li onclick="fun1()" class="button-edit admin-list-button"><a href="#">Edit</a></li>
                                 <li class="button-remove admin-list-button"><a href="action/deleteCommentPost.php?newspostid=<?php echo $newspostId; ?>">Remove</a></li>
-                            
                             </ul>
+
+
                         <?php endif; ?>    
                     <?php endif; ?>
             </div>
         </div>
         <div class="middle">
             <hr class="admin-hr1">
+            <h3 id="admin-title-post"><?php echo $title; ?></h3>
             <p id="admin-content-post"><?php echo $content; ?></p>
             <div id="editNewsPost">
                 <form method="POST">
@@ -86,20 +102,14 @@
                     <button style="display:block; margin: 0 auto;"class="user-submit-btn" type="submit" name="editNewsPost">Submit</button>
                 </form>
             </div>
-            
-            
         </div>
-
         <hr class="admin-hr2">
         <div class="bottom justify-center">
             <?php if(isset($_SESSION['logged_in'])): ?>
-                <a class="admin-button" href=""><i class="far fa-comment-alt"></i></a><span><?php echo "replies (" . $commentsMade . ")"; ?></span>
-                <span style><?php echo "/Posted on: " . $date; ?></span>
+                <a class="admin-button" href=""><i class="far fa-comment-alt"></i></a>
+                <?php endif; ?>
 
-            <?php else: ?>
-                <a style="color: #6495ED; margin: 10px 0;" href="index-l.php">Login/Create Account to comment</a>
-                <span style="margin: 10px 0;"><?php echo "/Posted on: " . $date; ?></span>
-            <?php endif; ?>
+            
             
         </div>
         <hr class="admin-hr2">

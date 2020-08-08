@@ -13,7 +13,6 @@ html {
 }
 
 body {
-  display: ;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: rgb(86,200,130);
   background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
@@ -253,19 +252,3 @@ body {
   
 }
 
-
-
-/* Admin Post */
-
-.post-main-container {
-  padding: 25px;
-  margin: 0 auto;
-  width: 100vh;
-  min-height: 200px;
-  height: auto;
-  background: #1b1b1b;
-  background: #1d1d1d;
-  border: 2px solid rgb(120, 121, 121);
-  border-radius: 25px;
-  color: white;
-}
