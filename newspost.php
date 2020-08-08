@@ -38,7 +38,7 @@
     <div class="justify-center">
         <h1 class="title1">News Post</h1>
     </div>
-    <div class="example-container">
+    <div class="post-main-container">
         <div class="top go-row align-center">
             <img src="profilepicture\default.jpg" alt="Admin-Profile-Pic">
             <p id="admin-name">Flamur Fazliu</p> <i class="fas fa-angle-right"></i>
