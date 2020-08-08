@@ -1,0 +1,304 @@
+@import url("style-only-footer.css");
+@import url("style-only-navigation-bar.css");
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  outline: none;
+}
+
+
+html {
+  height: max-content;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgb(86,200,130);
+  background: linear-gradient(0deg, #18191a 25%,  rgba(27,28,37,1) 90%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 25px;
+  padding:0;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+.go-column {
+  display: flex;
+  flex-direction: column;
+}.go-row    {
+  display: flex;
+  flex-direction: row;
+}.align-right {
+  margin-left: auto;
+}.align-center {
+  align-self: center;
+  align-items: center;
+} .justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+hr {
+  margin: 10px 0;
+
+}
+
+#content-css-color, #content-css-color-blue, #content-css-color-gray, #content-css-color-red, #content-css-color-f1f1f1 {
+  color: #cb7832;
+  background: #2b2b2b;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.title1 {
+    margin: 10px;
+}
+
+.example-container {
+    padding: 25px;
+    margin: 0 auto;
+    width: 80vh;
+    min-height: 200px;
+    height: auto;
+    background: #1b1b1b;
+    background: #1d1d1d; /** Couldn't decide which color soo... */
+    border-radius: 25px;
+    color:white
+}
+.top {
+    height: 50px;
+}
+
+img[alt='Admin-Profile-Pic'] {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
+#admin-name {
+    margin: 0 15px 0 20px;
+}
+
+#admin-category-indicator {
+    margin: 0 20px 0 15px;
+}
+
+.admin-dropdown-post-menu-button {
+  background-color:transparent;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:17px;
+  text-decoration:none;
+  background: none;
+  text-decoration: none;
+  border: none;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+
+.admin-dropdown-post-menu-container {
+  padding: 10px;
+  position: relative;
+  margin-left: auto;
+}
+
+.admin-dropdown-post-menu-container ul {
+  margin: -45px 0 0 90px;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  height: auto;
+  background: white;
+  left: 0px;
+  list-style: none;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+}
+
+.admin-list-button, .admin-list-button a{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+} .admin-list-button a {
+  padding: 10px;
+}
+
+
+.button-edit:hover {
+  background-color: rgb(79, 245, 87);
+}
+.button-remove:hover {
+  background-color: rgb(255, 57, 57);
+}
+
+.admin-dropdown-post-menu-container a {
+  color: black;
+}
+
+.admin-dropdown-post-menu-button:focus + ul {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0px);
+}
+
+.admin-hr1 {
+  border-top: 1px solid #38423b;
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #38423b, #ccc, #38423b);
+}
+
+#admin-content-post {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.admin-hr2 {
+  margin: 5px 0;
+}
+
+.admin-button {
+  padding: 5px 20px;
+  margin: 0 10px;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.admin-button:hover {
+  color: #000;
+  background: #fff;
+}
+
+
+.category-links {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.category-links a {
+  color: white;
+  padding: 5px 10px;
+  margin: 5px 5px;
+  font-size: 20px;
+  font-family: monospace;
+  border: 2px solid;
+  border-color: rgb(155, 155, 155);
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.category-links a:hover {
+  background: #2b2b2b;
+}
+
+
+img[alt='Admin-coment-Profile-Pic'] {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-bottom: auto;
+  margin-top: 6px;
+}
+
+.comment-content {
+  margin: 0 10px;
+  padding: 5px 10px 5px;
+  background: rgb(73, 73, 75);
+  border-radius: 20px;
+  width: 90%;
+}
+
+#comenter-name, #comenter-content {
+ font-size: 20px;
+}
+
+#comenter-content {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+}
+
+.dropdown-comment-menu-container {
+  padding: 10px;
+  position: relative;
+  margin-left: auto;
+}
+
+.dropdown-comment-menu-button {
+  background-color:transparent;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:17px;
+  text-decoration:none;
+  background: none;
+  text-decoration: none;
+  border: none;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.dropdown-comment-menu-container ul {
+  margin: -45px 0 0 90px;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  height: auto;
+  background: white;
+  left: 0px;
+  list-style: none;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+}
+
+.commenter-list-button, .commenter-list-button a{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+} .commenter-list-button a {
+  padding: 10px;
+}
+
+
+.button-edit:hover {
+  background-color: rgb(79, 245, 87);
+}
+.button-remove:hover {
+  background-color: rgb(255, 57, 57);
+}
+
+.dropdown-comment-menu-container a {
+  color: black;
+}
+
+.dropdown-comment-menu-button:focus + ul {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0px);
+}
