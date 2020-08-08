@@ -52,7 +52,7 @@
         <h2><a style="color: #6495ED;" href="newspost.php?id=<?php echo $newsPost['id']; ?>"><?php echo $newsPost['newsposttitle']; ?></a></h2>
         <!-- POST CONTENT -->
         <p><?php
-        $newsPostContent = str_replace(array("\r\n", "\r", "\n"), "", $newsPost['newspostcontent']);
+        $newsPostContent = str_replace("<br />", "", $newsPost['newspostcontent']);
         echo substr($newsPostContent, 0, 150) . "..."; ?></p>
 
         <!-- POST CATEGORIES -->
