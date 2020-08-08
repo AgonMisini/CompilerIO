@@ -68,6 +68,7 @@ hr {
     height: auto;
     background: #1b1b1b;
     background: #1d1d1d; /** Couldn't decide which color soo... */
+    border: 1px solid rgb(120, 121, 121);
     border-radius: 25px;
     color:white
 }
