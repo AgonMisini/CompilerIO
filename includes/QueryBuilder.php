@@ -569,6 +569,17 @@
             $stmt->execute();
             header("Location: index-p.php?success=bioChanged&id=" . $_SESSION['userId']);
         }
+
+        public function editNewsPost($newsPostContent, $newsPostId){
+            $stmt = $this->pdo->prepare("UPDATE newsposts SET newspostcontent = :newspostcontent WHERE id = :id");
+            $stmt->bindParam(":newspostcontent", $newsPostContent);
+            $stmt->bindParam(":id", $newsPostId);
+            $stmt->execute();
+
+            header("Location: newspost.php?success=postEdited&id=" . $newsPostId);
+        }
+        
+
         //Function about deleting an entire user along with his posts, comments. -TODO- Figure out how to delete the profile picture too.
         public function deleteUser($userId){
             //Checks if the user is an admin or not.

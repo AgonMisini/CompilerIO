@@ -5,7 +5,7 @@
         $newsCommentId = $_GET['newsCommentId'];
     }
     if(isset($_POST['editNewsComment'])){
-        $newsComment = $_POST['newsCommentText'];
+        $newsComment = nl2br($_POST['newsCommentText']);
         $conn = Connection::conn();
 
         $stmt = $conn->prepare("UPDATE newscomment SET newscommenttext = :newscomment WHERE id = :id");
