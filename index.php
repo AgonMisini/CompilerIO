@@ -10,9 +10,9 @@
         $currentPage = $_GET['page'];
     }
     if(isset($_GET['category'])){
-        $category = $_GET['category'];
-        $newsPosts = $query->getPagesForSpecificCategory($currentPage, $category);
-        $numberOfPages= $query->getNumberOfPagesForSpecificCategory($category);
+        $categoryPage = $_GET['category'];
+        $newsPosts = $query->getPagesForSpecificCategory($currentPage, $categoryPage);
+        $numberOfPages= $query->getNumberOfPagesForSpecificCategory($categoryPage);
     }else{
         $newsPosts = $query->getPages($currentPage);
         $numberOfPages = $query->numberOfPages();
@@ -30,7 +30,46 @@
 <body>
     <?php include "includes/Navigation-bar.php"; ?>
 
+    <?php foreach($newsPosts as $newsPost): ?>
+        <?php 
+            $userPostInfo = $query->selectAllWhere("users","id", $newsPost['userid']);
+            foreach($userPostInfo as $userPostInfo){
+                $username = $userPostInfo['username'];
+                $profilePic = $userPostInfo['profilepic'];
+                $userPostId = $userPostInfo['id'];
+            }
+            $comments = $query->selectAllWhere("newscomment", "newspostid", $newsPost['id']);
+            $commentsMade = count($comments);    
+        ?>
+        <!-- Adjust the tags to your need, i just made em all paragraphs and stuff -->
 
+
+        <!-- IMG -->
+        <img src="<?php echo $profilePic; ?>" alt="" width="100" height="100">
+        <!-- AUTHOR -->
+        <p><a style="color: #6495ED;" href="index-p.php?id=<?php echo $userPostId; ?>"><?php echo $username; ?></a></p>
+        <!-- POST LINK AND TITLE -->
+        <h2><a style="color: #6495ED;" href="newspost.php?id=<?php echo $newsPost['id']; ?>"><?php echo $newsPost['newsposttitle']; ?></a></h2>
+        <!-- POST CONTENT -->
+        <p><?php
+        $newsPostContent = str_replace(array("\r\n", "\r", "\n"), "", $newsPost['newspostcontent']);
+        echo substr($newsPostContent, 0, 150) . "..."; ?></p>
+
+        <!-- POST CATEGORIES -->
+        <p><?php $categories = $query->selectAllWhere("postcategories", "postid", $newsPost['id']);
+            foreach($categories as $category){
+                $stmt = $conn->query('SELECT name FROM category WHERE id = ' . $category['categoryid']);
+                $categoryLink = $stmt->fetchColumn();
+                echo '<a style="display: inline; color: #6495ED;" href="index.php?category=' . $categoryLink . '">' . $categoryLink .'</a>/';
+            }
+            ?></p>
+        <!-- COMMENTS MADE -->
+        <p><?php echo $commentsMade . " comments"; ?></p>
+        <!-- DATE -->
+        <p><?php echo date('H:i:s A M/d', strtotime($newsPost['timeposted'])); ?></p>
+        <hr>
+
+    <?php endforeach; ?>
 
 
 
@@ -47,9 +86,9 @@
                     <?php endif; ?>
                 <?php else: ?>
                     <?php if($currentPage == $page): ?>
-                        <li><a href="index.php?page=<?php echo $page . "&category=" . $category; ?>"><?php echo $page; ?></a></li>
+                        <li><a href="index.php?page=<?php echo $page . "&category=" . $categoryPage; ?>"><?php echo $page; ?></a></li>
                     <?php else: ?>
-                        <li><a href="index.php?page=<?php echo $page . "&category=" . $category; ?>"><?php echo $page; ?></a></li>
+                        <li><a href="index.php?page=<?php echo $page . "&category=" . $categoryPage; ?>"><?php echo $page; ?></a></li>
                     <?php endif ?>
                 <?php  endif;  ?>
         <?php } ?>

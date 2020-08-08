@@ -334,7 +334,7 @@
             $thisPageFirstResult = ($page-1)*$resultsPerPage;
 
             //Retrieve selected results from database
-            $stmt = $this->pdo->prepare('SELECT * FROM newsposts INNER JOIN postcategories ON newsposts.id = postcategories.postid WHERE postcategories.categoryid = :categoryId ORDER BY newsposts.timeposted DESC LIMIT ' . $thisPageFirstResult . "," . $resultsPerPage);
+            $stmt = $this->pdo->prepare('SELECT newsposts.id, newsposts.userid, newsposts.newsposttitle, newsposts.newspostcontent, newsposts.timeposted FROM newsposts INNER JOIN postcategories ON newsposts.id = postcategories.postid WHERE postcategories.categoryid = :categoryId ORDER BY newsposts.timeposted DESC LIMIT ' . $thisPageFirstResult . "," . $resultsPerPage);
             $stmt->bindParam(":categoryId", $categoryId);
             $stmt->execute();
             return $stmt->fetchAll();

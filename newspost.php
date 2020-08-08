@@ -94,7 +94,7 @@
         </div>
         <div class="middle">
             <hr class="admin-hr1">
-            <h3 id="admin-title-post"><?php echo $title; ?></h3>
+            <h3 id="admin-title-post" style="margin-bottom: 20px;"><?php echo $title; ?></h3>
             <p id="admin-content-post"><?php echo $content; ?></p>
             <div id="editNewsPost">
                 <form method="POST">
