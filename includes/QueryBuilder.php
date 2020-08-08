@@ -1,5 +1,5 @@
 
-<?php 
+<?php
     class QueryBuilder{
         protected $pdo;
         public function __construct(PDO $pdo){
@@ -185,12 +185,12 @@
             }
         }
         //Query for inserting a comment on a news post
-        public function insertNewsComment($table, $newsCommentInformation){
+        public function insertNewsComment($newsCommentInformation){
             $newsPostId = $newsCommentInformation[0];
             $userId = $newsCommentInformation[1];
             $newsCommentText = $newsCommentInformation[2];
             if(empty($newsCommentText)){
-                header("Location: newsPost.php?error=emptyField");
+                header("Location: newspost.php?error=emptyField&id=" . $newsPostId);
                 exit();
             }else{
                 $stmt = $this->pdo->prepare('INSERT INTO newscomment (newspostid, userid, newscommenttext, timeCommented) VALUES (:newspostid, :userid, :newscommenttext, now())');
@@ -198,7 +198,7 @@
                 $stmt->bindParam(":userid", $userId);
                 $stmt->bindParam(":newscommenttext",$newsCommentText);
                 $stmt->execute();
-                header("Location: newsPost.php?success");
+                header("Location: newspost.php?success&id=" . $newsPostId);
                 exit();
             }
         }
@@ -441,20 +441,21 @@
 
 
         //Delete news post function - Available only to the admin.
-        public function deleteNewsPost($newsPostId){
-            $stmt = $this->pdo->query("DELETE FROM newscomment WHERE newspostid = " . $newsPostId);
-            $stmt = $this->pdo->query("DELETE FROM postcategories WHERE postid = " . $newsPostId);
-            $stmt = $this->pdo->query("DELETE FROM newsposts WHERE id = " . $newsPostId);
 
-            header("Location: index.php?success=newsPostDeleted");
-        }
-        //Delete a news comment function - Available to the user who commented and an admin.
-        public function deleteNewsComment($newsCommentId){
-            $query_strings = $_SERVER['QUERY_STRING'];
-            $stmt = $this->pdo->query("DELETE FROM newscomment WHERE id = " . $newsCommentId);
+        // public function deleteNewsPost($newsPostId){
+        //     $stmt = $this->pdo->query("DELETE FROM newscomment WHERE newspostid = " . $newsPostId);
+        //     $stmt = $this->pdo->query("DELETE FROM postcategories WHERE postid = " . $newsPostId);
+        //     $stmt = $this->pdo->query("DELETE FROM newsposts WHERE id = " . $newsPostId);
 
-            header("Location: newsPost.php?" . $query_strings);
-        }
+        //     header("Location: index.php?success=newsPostDeleted");
+        // }
+        // //Delete a news comment function - Available to the user who commented and an admin.
+        // public function deleteNewsComment($newsCommentId){
+        //     $stmt = $this->pdo->query("DELETE FROM newscomment WHERE id = " . $newsCommentId);
+        //     header("Location: newspost.php?id=" . $query_strings);
+        // }
+
+
         //Delete forum post function - Available to the user who posted it and to an admin.
         public function deleteForumPost($forumPostId, $category){
             $stmt = $this->pdo->query("DELETE FROM forumcomment WHERE forumpostid = " . $forumPostId);

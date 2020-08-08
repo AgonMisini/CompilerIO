@@ -63,7 +63,7 @@ hr {
 .post-main-container {
     padding: 25px;
     margin: 0 auto;
-    width: 80vh;
+    width: 100vh;
     min-height: 200px;
     height: auto;
     background: #1b1b1b;
@@ -302,4 +302,55 @@ img[alt='Admin-coment-Profile-Pic'] {
   opacity: 1;
   pointer-events: all;
   transform: translateY(0px);
+}
+
+.commentBoxContainer{
+	margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+
+}
+.commentButton{
+  margin: 0 auto;
+  padding: 7px;
+}
+.comment2 {
+  width: 30%;
+  height: 130px;
+  padding: 10px;
+  background-color: #F3F3F3;
+  font-size: 14px;
+  color: black;
+  border-radius: 15px;
+  outline: none;
+}
+
+.user-submit-btn{
+	background-color:#1b1c25;
+	border: none;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+  padding:6px 24px;
+  width: 150px;
+  align-self: center;
+  transition: all 0.2s ease;
+}
+
+.user-submit-btn:hover {
+  background-color: #fff;
+  color: #0a0a23;
+
+}
+
+#editNewsPost{
+  display: none;
+  margin: 0 auto !important;
+  text-align: center;
+}
+#editNewsComment{
+  display: none;
 }

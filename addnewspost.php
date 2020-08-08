@@ -8,7 +8,7 @@
     if(isset($_POST['submitNewsPost'])){
         $userId = $_SESSION['userId'];
         $newsPostTitle = $_POST['newsPostTitle'];
-        $newsPostContent = $_POST['newsPostContent'];
+        $newsPostContent = nl2br($_POST['newsPostContent']);
 
         $newsPostInformation = array($userId, $newsPostTitle, $newsPostContent);
         $categories = $_POST['selected'];
