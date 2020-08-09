@@ -30,17 +30,24 @@
 <body>
     <?php include "includes/Navigation-bar.php"; ?>
     <h1 class="title1">Home</h1>
-    <div class="home-categories ">
-            <ul class="go-row  align-center">
-                <label for="home-category-name">Categories : </label>
-                <li class="home-category-name"><a href="">HTML</a></li>
-                <li class="home-category-name"><a href="">CSS</a></li>
-                <li class="home-category-name"><a href="">Java Script</a></li>
-                <li class="home-category-name"><a href="">PHP</a></li>
-                <li class="home-category-name"><a href="">SQL</a></li>
+    <div class="home-categories">
+        <div class="go-row align-center">
+            <ul class="go-row align-center">
+                <label for="home-category-name">Categories :</label>
+                <li class="home-category-name"><a href="#">HTML</a></li>
+                <li class="home-category-name"><a href="#">CSS</a></li>
+                <li class="home-category-name"><a href="#">Java Script</a></li>
+                <li class="home-category-name"><a href="#">PHP</a></li>
+                <li class="home-category-name"><a href="#">SQL</a></li>
             </ul>
-            <hr>
+            <ul class="home-create-post-container">
+                <li class="home-create-post"><a href="#">Create Post</a></li>
+            </ul>
         </div>
+        <hr>
+
+    </div>
+
     <?php foreach($newsPosts as $newsPost): ?>
         <?php 
             $userPostInfo = $query->selectAllWhere("users","id", $newsPost['userid']);
@@ -101,19 +108,12 @@
                         $categoryLink = $stmt->fetchColumn(); ?>
                 <a href="index.php?category=<?php echo $categoryLink;  ?>"><?php echo $categoryLink; ?></a>
             <?php endforeach; ?>        
-        </div>
-
+            </div>
             <!-- COMMENTS MADE -->
-
-
         </div>
-
     <?php endforeach; ?>
 
-
      <!-- PAGINATION-BOTTOM -->
-
-
     <div class="home-pagination-main-container">
         <div class="jump-arrow-page go-row align-center">
             <div class="arrow arrow-left">

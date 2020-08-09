@@ -167,8 +167,8 @@
       ?>
       <?php foreach($forumPosts as $forumPost): ?>
         <div class="user-post-left">
-        <img src="<?php echo $profilePicture; ?>" alt="" width="100" height="100" style="display: block; margin-bottom: 10px; border-radius: 100px;">
-        <h4 style="align-self: center; padding: 0 10px;"><a style="color: #6495ED;" href="<?= "index-forum-topic-posts.php?category=" . $forumPost['category'] . "&id=" . $forumPost['id']; ?>"><?= $forumPost['forumposttitle'] ?></a></h4>
+          <img src="<?php echo $profilePicture; ?>" alt="" width="100" height="100" style="display: block; margin-bottom: 10px; border-radius: 100px;">
+          <h4 style="align-self: center; padding: 0 10px;"><a style="color: #fff;" href="<?= "index-forum-topic-posts.php?category=" . $forumPost['category'] . "&id=" . $forumPost['id']; ?>"><?= $forumPost['forumposttitle'] ?></a></h4>
       </div>
       <div class="content-user-post" >
         <?php 
@@ -184,21 +184,22 @@
         </ul>
 
       <?php endforeach; ?>
-
-      <ul>
-        <?php 
-              $numberOfPages = $query->numberOfPagesUser($_GET['id']);
-							for($page=1;$page <= $numberOfPages; $page++){
-								if(isset($_GET['page'])){
-                    echo '<a href="index-p.php?id=' . $_GET['id'] .'&page=' . $page .'">' . '<li>' . $page . '</li>' . '</a>';	
-							  }else{
-                    echo '<a href="index-p.php?id=' . $_GET['id'] .'&page=' . $page .'">' . '<li>' . $page . '</li>' . '</a>';	
-                }
+      <div class="userpage-pagination-main-container">
+        <ul class="pagination-list-link">
+          <?php 
+            $numberOfPages = $query->numberOfPagesUser($_GET['id']);
+            for($page=1;$page <= $numberOfPages; $page++){
+              if(isset($_GET['page'])){
+                  echo '<a href="index-p.php?id=' . $_GET['id'] .'&page=' . $page .'">' . '<li>' . $page . '</li>' . '</a>';	
+              }else{
+                  echo '<a href="index-p.php?id=' . $_GET['id'] .'&page=' . $page .'">' . '<li>' . $page . '</li>' . '</a>';	
               }
-        ?>
-      </ul>
+            }
+          ?>
+        </ul>
       </div>
     </div>
+  </div>
     
     <div class="user-form-column go-middle" id="profile-settings" style="display: none;">
       <hr id="user-hr">

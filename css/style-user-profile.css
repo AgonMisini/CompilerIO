@@ -26,6 +26,27 @@ body {
   padding-bottom: 100px;
 }
 
+hr {
+  margin: 10px 0;
+} .go-column {
+  display: flex;
+  flex-direction: column;
+} .go-row    {
+  display: flex;
+  flex-direction: row;
+} .align-right {
+  margin-left: auto;
+} .align-center {
+align-self: center;
+align-items: center;
+} .justify-center {
+  display: flex;
+  justify-content: center;
+} .text-center {
+  text-align: center;
+} .go-middle {
+  margin: 0 auto;
+}
 
 .profile-card-column {
   text-align: center;
@@ -65,25 +86,25 @@ body {
   justify-content: center;
 }
 .myButton {
-  background:linear-gradient(to bottom, #f5f5f5 50%, #1a1b21 125%);
-  background-color: transparent;
-	border-radius: 8px;
 	display:inline-block;
-	cursor:pointer;
-	color:#000;
-	font-family:Arial;
-	font-size: 20px;
+	padding: 10px 20px;
+  margin-bottom: 10px;
+	color:#fff;
+  background-color: transparent;
+  border: 2px solid;
+  border-color: rgb(155, 155, 155);
+  border-radius: 5px;
+	font-size: 25px;
+	font-family:monospace;
 	font-weight:bold;
-	padding: 13px 32px;
 	text-decoration:none;
-  margin: 0 25px;
-  margin-bottom: 15px;
+	cursor:pointer;
   transition: all 0.2s ease;
 }
 
 .myButton:hover {
-	background:linear-gradient(to top, #f5f5f5 50%, #1a1b21 125%);
-  background-color:#408c99;
+  background: #fff;
+  color: rgb(255, 74, 74);
 }
 
 
@@ -94,9 +115,7 @@ body {
   margin: 0 auto;
 }
 
-.go-middle {
-  margin: 0 auto;
-}
+
 
 .tabs {
   margin: 0 auto;
@@ -137,7 +156,7 @@ body {
   font-size: 20px;
   width: 700px;
   height: auto;
-  padding: 40px 40px 0 40px;
+  padding: 40px 40px 20px 40px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -248,7 +267,28 @@ body {
 }
 
 
-.home-pagination-main-container {
-  
+.userpage-pagination-main-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
 }
+
+
+.pagination-list-link a {
+  padding: 3px 10px;
+  color: white;
+  background: transparent;
+  text-decoration: none;
+  border: 1px solid ;
+  width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.pagination-list-link a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+
+
 
