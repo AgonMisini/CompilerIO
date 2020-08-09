@@ -34,4 +34,30 @@ body {
 }
 .messages-container{
   margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+  border: 1px solid white;
+  width: 50vw;
+  border-radius: 20px;
+}
+.myButton {
+	display:inline-block;
+	padding: 10px 20px;
+  margin-bottom: 10px;
+	color:#fff;
+  background-color: transparent;
+  border: 2px solid;
+  border-color: rgb(155, 155, 155);
+  border-radius: 5px;
+	font-size: 25px;
+	font-family:monospace;
+	font-weight:bold;
+	text-decoration:none;
+	cursor:pointer;
+  transition: all 0.2s ease;
+}
+
+.myButton:hover {
+  background: #fff;
+  color: rgb(255, 74, 74);
 }

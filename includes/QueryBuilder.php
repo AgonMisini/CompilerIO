@@ -619,7 +619,7 @@
         //Function to delete a contact us message.
         public function deleteContactMessage($postId){
             $stmt = $this->pdo->query("DELETE FROM contactmessages WHERE id = " . $postId);
-            header("Location: contactMessages.php");
+            header("Location: admin-messages.php");
         }
     }
 ?>

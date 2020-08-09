@@ -7,6 +7,11 @@
 
     $contactmessages = $query->selectAll("contactmessages");
 
+    if(isset($_POST['deleteMessage'])){
+        $contactId = $_POST['messageid'];
+
+        $query->deleteContactMessage($contactId);
+    }
 
 ?>
 <!DOCTYPE html>
@@ -31,7 +36,12 @@
             <p style="margin-bottom: 10px;"><strong>Title:</strong> <?php echo $contactmessage['subject']; ?></p>
             <p style="margin-bottom: 10px;"><strong>Message:</strong> <?php echo $contactmessage['message']; ?></p>
             <p style="margin-bottom: 10px;"><strong>Date:</strong> <?php echo date('h:i:s A M/d', strtotime($contactmessage['timesent'])); ?></p>
+            <form method="POST">
+                <input type="hidden" name="messageid" value="<?php echo $contactmessage['id']; ?>">
+                <button class="myButton" name="deleteMessage">Remove message</button>
+            </form>
         </div>
+        
         <?php endforeach; ?>
     </main>
 
