@@ -30,25 +30,45 @@
 <body>
     <?php include "includes/Navigation-bar.php"; ?>
     <h1 class="title1">Home</h1>
-    <div class="home-categories">
-        <div class="go-row align-center">
-            <ul class="go-row align-center">
-                <label for="home-category-name">Categories :</label>
-                <li class="home-category-name"><a href="#">HTML</a></li>
-                <li class="home-category-name"><a href="#">CSS</a></li>
-                <li class="home-category-name"><a href="#">Java Script</a></li>
-                <li class="home-category-name"><a href="#">PHP</a></li>
-                <li class="home-category-name"><a href="#">SQL</a></li>
-            </ul>
-            <ul class="home-create-post-container">
-                <li class="home-create-post"><a href="#">Create Post</a></li>
-            </ul>
-        </div>
-        <hr>
 
+    <div class="home-categories ">
+        <ul class="go-row  align-center">
+            <label for="home-category-name">Categories : </label>
+            <?php if(isset($_GET['category'])): ?>
+                <li class="home-category-name"><a href="index.php">All</a></li>
+            <?php else: ?>
+                <li class="home-category-name"><a style="background-color:white; color:black; " href="index.php">All</a></li>
+            <?php endif; ?>
+            
+            <?php $allCategories = $query->selectAll("category");
+                foreach($allCategories as $categoryList):
+            ?>
+                <?php if(isset($_GET['category'])): ?>
+                    <?php if($_GET['category'] == $categoryList['name']): ?>
+                        <li class="home-category-name"><a style="background-color:white; color:black; "href="index.php?category=<?php echo $categoryList['name'] ;?>"><?php echo $categoryList['name']; ?></a></li>
+                    <?php else: ?>
+                        <li class="home-category-name"><a href="index.php?category=<?php echo $categoryList['name'] ;?>"><?php echo $categoryList['name']; ?></a></li>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <li class="home-category-name"><a href="index.php?category=<?php echo $categoryList['name'] ;?>"><?php echo $categoryList['name']; ?></a></li>
+                <?php endif; ?>
+                
+            <?php endforeach; ?>
+        </ul>
+        <?php if(isset($_SESSION['logged_in'])): ?>
+            <?php if($_SESSION['admin'] == 1): ?>
+                <ul class="home-create-post-container">
+                    <li class="home-create-post"><a href="addnewspost.php">Create Post</a></li>
+                </ul> 
+            <?php endif; ?>
+        <?php endif; ?>
+       
     </div>
-
+        <?php if(count($newsPosts) == 0): ?>
+            <h4 style="text-align: center !important; margin-top: 50px;">No news posts have been made in this category.</h4>
+        <?php endif; ?>
     <?php foreach($newsPosts as $newsPost): ?>
+        
         <?php 
             $userPostInfo = $query->selectAllWhere("users","id", $newsPost['userid']);
             foreach($userPostInfo as $userPostInfo){
@@ -83,8 +103,7 @@
                 <?php if(isset($_SESSION['logged_in'])): ?>
                     <button class="admin-dropdown-post-menu-button">···</button>
                     <ul>
-                        <li onclick="fun1()" class="button-edit admin-list-button"><a href="#">Edit</a></li>
-                        <li class="button-remove admin-list-button"><a href="action/deleteCommentPost.php?newspostid=<?php echo $newspostId; ?>">Remove</a></li>
+                        <li class="button-remove admin-list-button"><a href="action/deleteCommentPost.php?newspostid=<?php echo $newsPost['id']; ?>">Remove</a></li>
                     </ul>
                 <?php endif; ?>
                 </div>
@@ -93,7 +112,7 @@
             <div class="newspost-middle">
 
             <hr class="admin-hr1">
-            <h3 id="admin-title-post"><a style="color: #fff;" href="newspost.php?id=<?php echo $newsPost['id']; ?>"><?php echo $newsPost['newsposttitle']; ?></a></h3>
+            <h3 id="admin-title-post"><a style="color: #6495ED;" href="newspost.php?id=<?php echo $newsPost['id']; ?>"><?php echo $newsPost['newsposttitle']; ?></a></h3>
 
             <!-- POST CONTENT -->
             <p><?php $newsPostContent = str_replace("<br />", "", $newsPost['newspostcontent']);
@@ -114,22 +133,53 @@
     <?php endforeach; ?>
 
      <!-- PAGINATION-BOTTOM -->
-    <div class="home-pagination-main-container">
-        <div class="jump-arrow-page go-row align-center">
-            <div class="arrow arrow-left">
-                <a href="">
-                    <i class="fa arrow1 fa-angle-double-left"></i>
-                </a>
-            </div>
+     <div class="home-pagination-main-container">
+        <?php if(count($newsPosts) > 0): ?>
+        <?php if($numberOfPages == 1): ?>
 
-            <p class="arrow-seperator">|</p>
-            
-            <div class="arrow arrow-right">
-                <a href="">
-                    <i class="fa arrow2 fa-angle-double-right"></i>
-                </a>
+        <?php else: ?>
+            <div class="jump-arrow-page go-row align-center">
+                <?php if($currentPage == 1): ?>
+                    
+                <?php else: ?>
+                    <div class="arrow arrow-left">
+                        <?php if(isset($_GET['category'])): ?>
+                            <a href="index.php?category=<?php 
+                                $prevPage = $currentPage - 1;
+                                echo $_GET['category'] . "&page=" . $prevPage; ?>">
+                                <i class="fa arrow1 fa-angle-double-left"></i>
+                            </a>
+                        <?php else: ?>
+                            <a href="index.php?page=<?php $prevPage = $currentPage - 1;
+                                echo $prevPage; 
+                                ?>">
+                                <i class="fa arrow1 fa-angle-double-left"></i>
+                            </a>
+                        <?php endif; ?>
+                        
+                    </div>
+                <?php endif; ?>
+                
+
+                <p class="arrow-seperator">|</p>
+                <?php if($currentPage == $numberOfPages): ?>
+                <?php else: ?>
+                    <?php if(isset($_GET['category'])): ?>
+                        <div class="arrow arrow-right">
+                            <a href="index.php?category=<?php $nextPage = $currentPage + 1; echo $_GET['category'] . "&page=" . $nextPage; ?>">
+                                <i class="fa arrow2 fa-angle-double-right"></i>
+                            </a>
+                        </div>
+                    <?php else: ?>
+                        <div class="arrow arrow-right">
+                            <a href="index.php?page=<?php $nextPage = $currentPage + 1; echo $nextPage; ?>">
+                                <i class="fa arrow2 fa-angle-double-right"></i>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
             </div>
-        </div>
+        <?php endif; ?>
 
         <ul class="align-center pagination-list-link">
             <?php 
@@ -148,7 +198,8 @@
                         <?php endif ?>
                     <?php  endif;  ?>
             <?php } ?>
-        </ul>      
+        </ul>
+        <?php endif; ?>      
     </div>
     <?php include "includes/footer.php"; ?>
 </body>

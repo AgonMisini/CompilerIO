@@ -392,6 +392,8 @@ width: 90%;
   overflow: hidden;
 }
 .pagination-list-link  {
+  display: flex;
+  flex-direction: row;
   padding: 3px 10px;
   color: white;
   background: transparent;

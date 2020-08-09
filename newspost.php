@@ -86,8 +86,6 @@
                                 <li onclick="fun1()" class="button-edit admin-list-button"><a href="#">Edit</a></li>
                                 <li class="button-remove admin-list-button"><a href="action/deleteCommentPost.php?newspostid=<?php echo $newspostId; ?>">Remove</a></li>
                             </ul>
-
-
                         <?php endif; ?>    
                     <?php endif; ?>
             </div>

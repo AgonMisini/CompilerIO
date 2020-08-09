@@ -273,8 +273,14 @@ align-items: center;
   margin: 10px 0;
 }
 
-
+.pagination-list-link {
+  display: flex;
+  flex-direction: row;
+  margin:0 auto;
+}
 .pagination-list-link a {
+  display: flex;
+  flex-direction: row;
   padding: 3px 10px;
   color: white;
   background: transparent;
