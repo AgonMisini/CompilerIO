@@ -357,7 +357,6 @@ width: 90%;
   padding: 10px;
 }
 
-
 .button-edit:hover {
   background-color: rgb(79, 245, 87);
 }
@@ -374,6 +373,11 @@ width: 90%;
   pointer-events: all;
   transform: translateY(0px);
 }
+
+.admin-dropdown-post-menu-container ul:hover {
+  pointer-events: all;
+} 
+
 /** PAGINATION */
 
 .home-pagination-main-container {

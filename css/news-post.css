@@ -154,11 +154,17 @@ img[alt='Admin-Profile-Pic'] {
 .admin-dropdown-post-menu-container a {
   color: black;
 }
-.admin-dropdown-post-menu-button:focus + ul  {
+.admin-dropdown-post-menu-button:focus + .admin-option-list  {
   opacity: 1;
   pointer-events: all;
   transform: translateY(0px);
 }
+
+.admin-dropdown-post-menu-container ul:hover {
+  pointer-events: all;
+}
+
+
 
 .admin-dropdown-post-menu-button:focus + ul  {
   display: block;
@@ -311,6 +317,10 @@ img[alt='Admin-coment-Profile-Pic'] {
   opacity: 1;
   pointer-events: all;
   transform: translateY(0px);
+}
+
+.dropdown-comment-menu-container ul:hover {
+  pointer-events: all;
 }
 
 .commentBoxContainer{

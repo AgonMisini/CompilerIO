@@ -82,7 +82,7 @@
                 <?php if(isset($_SESSION['logged_in'])): ?>
                         <?php if($_SESSION['userId'] == $userIdAdmin || $_SESSION['admin'] == 1): ?>
                             <button class="admin-dropdown-post-menu-button">···</button>
-                            <ul>
+                            <ul class="admin-option-list">
                                 <li onclick="fun1()" class="button-edit admin-list-button"><a href="#">Edit</a></li>
                                 <li class="button-remove admin-list-button"><a href="action/deleteCommentPost.php?newspostid=<?php echo $newspostId; ?>">Remove</a></li>
                             </ul>
