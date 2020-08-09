@@ -84,7 +84,7 @@
                     <?php 
                         for($page=1;$page <= $numberOfPages; $page++){
                             if($_GET['page'] == $page){
-                                echo '<a style="background-color: white; color: black;" class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
+                                echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }else{
                                 echo '<a class="list-link" href="index-subforum.php?category=' . $category . '&orderBy=' . $_GET['orderBy']  . '&page=' . $page .'">' . $page . '</a>';
                             }

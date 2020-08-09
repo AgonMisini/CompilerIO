@@ -108,9 +108,6 @@
             <?php if(isset($_SESSION['logged_in'])): ?>
                 <a class="admin-button" href=""><i class="far fa-comment-alt"></i></a>
                 <?php endif; ?>
-
-            
-            
         </div>
         <hr class="admin-hr2">
         <div class="category-links">
@@ -133,7 +130,6 @@
                   }  
             ?>
             <div class="comments-main-wrapper">
-                <hr class="admin-hr1">
                 <div class="comments-wrapper go-row align-center">
                 <img src="<?php echo $commentProfilePic; ?>" alt="Admin-coment-Profile-Pic">
                 <div class="comment-content">
@@ -164,7 +160,6 @@
                 </div>    
             </div>
         <?php endforeach; ?>
-        <hr class="admin-hr1">
         <?php if(isset($_SESSION['logged_in'])){
                 include "includes/comment.php";
         } ?>

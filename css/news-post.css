@@ -116,7 +116,6 @@ img[alt='Admin-Profile-Pic'] {
   margin: -45px 0 0 90px;
   position: absolute;
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
   align-items: center;
   width: fit-content;
@@ -127,6 +126,7 @@ img[alt='Admin-Profile-Pic'] {
   border-radius: 10px;
   overflow: hidden;
   opacity: 0;
+  pointer-events: none;
   transform: translateY(-10px);
   transition: all 0.2s ease;
 }
@@ -138,6 +138,7 @@ img[alt='Admin-Profile-Pic'] {
   justify-content: center;
   align-items: center;
   font-size: 25px;
+  transition: all 0.2s ease;
 } .admin-list-button a {
   padding: 10px;
 }
@@ -153,11 +154,14 @@ img[alt='Admin-Profile-Pic'] {
 .admin-dropdown-post-menu-container a {
   color: black;
 }
-
-.admin-dropdown-post-menu-button:focus + ul {
+.admin-dropdown-post-menu-button:focus + ul  {
   opacity: 1;
   pointer-events: all;
   transform: translateY(0px);
+}
+
+.admin-dropdown-post-menu-button:focus + ul  {
+  display: block;
 }
 
 .admin-hr1 {
@@ -209,6 +213,10 @@ img[alt='Admin-Profile-Pic'] {
   background: #2b2b2b;
 }
 
+.comments-main-wrapper {
+  margin: 10px 0;
+}
+
 
 img[alt='Admin-coment-Profile-Pic'] {
   width: 40px;
@@ -247,7 +255,7 @@ img[alt='Admin-coment-Profile-Pic'] {
 	color:#000000;
 	font-family:Arial;
 	font-size:17px;
-  text-decoration:none;
+  text-decoration:nonae;
   background: none;
   text-decoration: none;
   border: none;
@@ -271,6 +279,7 @@ img[alt='Admin-coment-Profile-Pic'] {
   border-radius: 10px;
   overflow: hidden;
   opacity: 0;
+  pointer-events: none;
   transform: translateY(-10px);
   transition: all 0.2s ease;
 }
