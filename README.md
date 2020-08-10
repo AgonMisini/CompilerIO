@@ -80,7 +80,7 @@ TABLES -->
 
 ## License & Copyright
 
-This source code is free for use under the condition of having the credits on the creators of this project.
+This source code is free for use under the condition of having the credits on the creators of this project displayed on the platform you will be using to show.
 
 # :D
 
