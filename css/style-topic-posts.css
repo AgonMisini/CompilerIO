@@ -7,6 +7,7 @@
   text-decoration: none;
   box-sizing: border-box;
   color: white;
+  outline: none;
 }
 
 html {
@@ -46,16 +47,18 @@ hr {
 }
 
 .container-forum-topic-posts {
-    padding: 25px;
-    background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
-}
-
-.main-user-topic-post {
+  width: 100vh;
+  padding: 25px;
+  background: linear-gradient(0deg, rgb(24,25,26) 25%,  rgba(27,28,37,1) 90%);
   border: 1px solid;
   border-radius: 25px;
   padding: 10px;
   margin: 0 0 10px 0;
   height: auto;
+  margin: 15px auto;
+}
+
+.main-user-topic-post {
 }
 
 .topic-user-profile-pic {
@@ -234,6 +237,14 @@ hr {
 .commentButton{
   margin: 0 auto;
   padding: 7px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid;
+  border-color: rgb(155, 155, 155);
+  transition: all 0.2s ease;
+}.commentButton:hover {
+  color: #000;
+  background: #fff;
 }
 .comment2 {
   width: 20%;
@@ -255,3 +266,4 @@ hr {
 .fa-thumbs-up, .fa-thumbs-o-up {
   font-size: 1.3em;
 }
+

@@ -126,37 +126,24 @@ hr {
 .list-link:hover {
   background-color: #fff;
   color: #000;
-}
-
-.list-link:hover > a {
+} .list-link:hover > a {
+  color: #000;
+} .fa {
+  transition: all 0.2s ease;
+} .list-link:hover > .fa{
   color: #000;
 }
-
-a {
-  transition: all 0.2s ease;
-}
-.go-next-page {
-
-}
-
-.go-last-page {
-  
-}
-
 
 .forum-topics {
   transition: all 0.2s ease;
   border: 1px solid;
   border-radius: 5px;
   padding: 10px;
+  margin: 10px 0;
 }
 
 .forum-topics:hover {
     background-color: rgba(0, 128, 128, 0.1);
-}
-
-#main-forum-topic-title {
-
 }
 
 .forum-posts-sum {

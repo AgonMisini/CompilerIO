@@ -79,12 +79,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/style-topic-posts.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous"></script>
+    <title>FOrum Post</title>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -153,7 +153,7 @@
                             <div class="user-comment-container go-column">
                                 <div class="user-comment-content">
                                     <div class="go-row">
-                                    <h4><a style="display:inline; color: #6495ED;" href="<?php echo "index-p.php?id=" . $usersId;  ?>"><?php echo $username; ?></a> | <span class="date"><?php echo date('h:i:s A M/d', strtotime($comment['timecommented'])); ?></span></h4>
+                                    <h4><a style="display:inline; color: #fff;" href="<?php echo "index-p.php?id=" . $usersId;  ?>"><?php echo $username; ?></a> | <span class="date"><?php echo date('h:i:s A M/d', strtotime($comment['timecommented'])); ?></span></h4>
                                     
 
                                     </div>
@@ -169,7 +169,7 @@
                     if(isset($_SESSION['logged_in'])){
                         include "includes/comment.php";
                     }else{
-                        echo '<p><a style="display: inline; color: #6495ED;;"href="index-l.php">Login/Create account </a>so you can comment.</p>';
+                        echo '<p><a style="display: inline; color: #fff;"href="index-l.php">Login/Create account </a>so you can comment.</p>';
                     }
                 ?>
             </div>

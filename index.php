@@ -31,8 +31,8 @@
     <?php include "includes/Navigation-bar.php"; ?>
     <h1 class="title1">Home</h1>
 
-    <div class="home-categories ">
-        <ul class="go-row  align-center">
+    <div class="home-categories go-row align-center">
+        <ul class="home-category-main-container go-row align-center">
             <label for="home-category-name">Categories : </label>
             <?php if(isset($_GET['category'])): ?>
                 <li class="home-category-name"><a href="index.php">All</a></li>
@@ -54,7 +54,7 @@
                 <?php endif; ?>
                 
             <?php endforeach; ?>
-        </ul>
+        </ul> 
         <?php if(isset($_SESSION['logged_in'])): ?>
             <?php if($_SESSION['admin'] == 1): ?>
                 <ul class="home-create-post-container">
@@ -86,7 +86,7 @@
                 <!-- IMG -->
                 <img src="<?php echo $profilePic; ?>" alt="Admin-Profile-Pic">
                 <!-- AUTHOR -->
-                <p id="admin-name"><a style="color: #6495ED;" href="index-p.php?id=<?php echo $userPostId; ?>"><?php echo $username; ?></a></p><i class="fas fa-angle-right"></i>
+                <p id="admin-name"><a style="color: #fff;" href="index-p.php?id=<?php echo $userPostId; ?>"><?php echo $username; ?></a></p><i class="fas fa-angle-right"></i>
 
                 <span style="margin: 0 5px; font-size: 17px; "><?php echo "Replies : " . $commentsMade . " "; ?></span>
                 <!-- POST CATEGORIES -->
@@ -112,13 +112,12 @@
             <div class="newspost-middle">
 
             <hr class="admin-hr1">
-            <h3 id="admin-title-post"><a style="color: #6495ED;" href="newspost.php?id=<?php echo $newsPost['id']; ?>"><?php echo $newsPost['newsposttitle']; ?></a></h3>
+            <h3 id="admin-title-post"><a style="color: #fff;" href="newspost.php?id=<?php echo $newsPost['id']; ?>"><?php echo $newsPost['newsposttitle']; ?></a></h3>
 
             <!-- POST CONTENT -->
             <p><?php $newsPostContent = str_replace("<br />", "", $newsPost['newspostcontent']);
             echo substr($newsPostContent, 0, 150) . "..."; ?></p>
             </div>
-           
             
             <div class="category-links">
             <?php 
@@ -181,7 +180,7 @@
             </div>
         <?php endif; ?>
 
-        <ul class="align-center pagination-list-link">
+        <ul class="align-center go-row pagination-list-link">
             <?php 
                 for($page=1;$page <= $numberOfPages; $page++){
                     if(!isset($_GET['category'])): ?>

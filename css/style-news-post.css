@@ -180,9 +180,11 @@ img[alt='Admin-Profile-Pic'] {
 
 #admin-content-post {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 10px 0;
 }
 .admin-hr2 {
-  margin: 5px 0;
+  margin: 0;
+  border-top: 1px solid #fff;
 }
 
 .admin-button {

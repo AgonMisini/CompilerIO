@@ -182,10 +182,10 @@
             <a href="#"><i class="fa fa-share" aria-hidden="true"></i></a>
           </li>
         </ul>
-
+        <hr style="margin:0 0 20px;">
       <?php endforeach; ?>
       <div class="userpage-pagination-main-container">
-        <ul class="pagination-list-link">
+        <ul class="pagination-list-link go-row">
           <?php 
             $numberOfPages = $query->numberOfPagesUser($_GET['id']);
             for($page=1;$page <= $numberOfPages; $page++){
@@ -198,7 +198,6 @@
           ?>
         </ul>
       </div>
-    </div>
   </div>
     
     <div class="user-form-column go-middle" id="profile-settings" style="display: none;">

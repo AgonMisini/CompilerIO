@@ -269,19 +269,12 @@ align-items: center;
 
 .userpage-pagination-main-container {
   display: flex;
-  flex-direction: column;
-  margin: 10px 0;
+  flex-direction: row;
 }
 
-.pagination-list-link {
-  display: flex;
-  flex-direction: row;
-  margin:0 auto;
-}
 .pagination-list-link a {
-  display: flex;
-  flex-direction: row;
   padding: 3px 10px;
+  margin: 0 5px;
   color: white;
   background: transparent;
   text-decoration: none;
